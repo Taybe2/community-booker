@@ -27,3 +27,31 @@ def generate_time_slots_view(request, centre_id):
         return redirect('admin:community_centre_communitycentre_changelist')  # Redirect to admin list
     
     return render(request, 'community_centre/generate_time_slots.html', {'centre': centre})
+
+def home_page(request):
+
+    DAYS_OF_WEEK = {
+            1: 'Monday',
+            2: 'Tuesday',
+            3: 'Wednesday',
+            4: 'Thursday',
+            5: 'Friday',
+            6: 'Saturday',
+            7: 'Sunday',
+        }
+    community_centre = CommunityCentre.objects.first()
+
+    context = {
+        "community_centre": community_centre,
+        "community_centre_slug": community_centre.slug,
+        'openning_day_name': DAYS_OF_WEEK.get(
+                community_centre.operating_start_day, "Invalid Day"),
+        'closing_day_name': DAYS_OF_WEEK.get(
+                community_centre.operating_end_day, "Invalid Day"),
+    }
+
+    return render(
+        request,
+        "community_centre/home.html",
+        context,
+    )

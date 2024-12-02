@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block title %}Welcome to {{ community_centre.name }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid container-welcome text-center d-flex align-items-center">
+    <div>
+        <h1>Community Booker</h1>
+        <p class="lead">Welcome to Community Booker App! 
+            Plan your community events, meetings, and activities with ease. 
+            Check our availability and book the perfect time slot for your next event!
+        </p>
+        <!-- Button to Available Time Slots -->
+        <a href="#" class="btn btn-primary mt-4">See Available Times</a>
+    </div>    
+</div>
+
+<!-- Center Details Section -->
+<section>
+    <div class="container mt-5">
+        <h2 class="text-center mb-5">Community Center Details</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6">
+                    One of three columns
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h4>{{ community_centre.name }}</h4>
+                        <p>{{ community_centre.description }}</p>
+                        <p>{{ community_centre.details }}</p>
+                        <p><strong>Location:</strong> {{ community_centre.address }}</p>
+                        <p>
+                            <span><strong>Operating Times:</strong></span>
+                            <span>
+                                <span class="span-display-block">{{ openning_day_name }} to {{ closing_day_name }},</span>
+                                <span class="span-display-block">{{community_centre.opening_time}} - {{community_centre.closing_time}}</span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Center Detail Section -->
+{% endblock %}
