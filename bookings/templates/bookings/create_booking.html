@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Booking Confirmation - Community Booker{% endblock %}
 
@@ -10,7 +11,7 @@
 
     <form method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form | crispy }}
         <button class="btn btn-primary" type="submit">Confirm Booking</button>
     </form>
 </div>
