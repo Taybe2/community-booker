@@ -1,8 +1,10 @@
 from datetime import timedelta
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 from community_centre.models import CommunityCentre
 from .models import TimeSlot, Booking
+from .forms import BookingForm
 
 # Create your views here.
 community_centre = CommunityCentre.objects.first()
@@ -79,3 +81,29 @@ def time_slot_view(request, booking_slug=None):
     }
 
     return render(request, 'bookings/timeslot_list.html', context)
+
+
+@login_required
+def create_booking_view(request, time_slot_id):
+    """Handle booking creation for a selected time slot."""
+    time_slot = get_object_or_404(TimeSlot, id=time_slot_id)
+
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.user = request.user  # Associate the booking with the logged-in user
+            booking.time_slot = time_slot
+            booking.community_centre = community_centre
+            print(booking)
+            booking.save()
+            messages.success(request, "Booking successfully created.")
+            return redirect('my-bookings')  # Redirect to My Bookings page
+
+    else:
+        form = BookingForm(initial={'time_slot': time_slot})
+
+    return render(request, 'bookings/create_booking.html', {
+        'form': form,
+        'time_slot': time_slot,
+    })
