@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% url 'time_slots' %}
 
 {% block title %}Welcome to {{ community_centre.name }}{% endblock %}
 
@@ -12,7 +13,7 @@
             Check our availability and book the perfect time slot for your next event!
         </p>
         <!-- Button to Available Time Slots -->
-        <a href="#" class="btn btn-primary mt-4">See Available Times</a>
+        <a href="{% url 'time_slots' %}" class="btn btn-primary mt-4">See Available Times</a>
     </div>    
 </div>
 
