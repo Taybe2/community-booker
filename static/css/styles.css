@@ -41,6 +41,9 @@
 .btn-mybookings {
     min-width: 10rem;
 }
+.item-past {
+    color:#bababa;
+}
 
 @media screen and (min-width: 577px) {
     .container-welcome div {

@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta, datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.utils import timezone
@@ -8,6 +8,8 @@ from .models import TimeSlot, Booking
 from .forms import BookingForm
 
 # Create your views here.
+
+# get the only Community Centre currently
 community_centre = CommunityCentre.objects.first()
 
 def time_slot_view(request, booking_slug=None):
@@ -65,7 +67,7 @@ def time_slot_view(request, booking_slug=None):
             return redirect('edit-booking', slug=booking.slug)
         if selected_slot_id:
             # Save the booking in the database or perform other actions
-            return redirect('booking-details', time_slot_id=selected_slot_id)
+            return redirect('create-booking', time_slot_id=selected_slot_id)
     
     booking = None
     if booking_slug:
@@ -116,10 +118,33 @@ def my_bookings_view(request):
     user = request.user
 
     # Fetch the bookings made by the logged-in user
-    bookings = Booking.objects.filter(user=user).order_by('-created_at')  # You can order by booking creation date
+    user_bookings = Booking.objects.filter(user=user).order_by('time_slot')  # You can order by booking creation date
+
+    # Get current datetime
+    current_datetime = timezone.now()
+
+    # Separate past and upcoming bookings
+    past_bookings = []
+    upcoming_bookings = []
+
+    for booking in user_bookings:
+        # Combine date and time to create naive datetime
+        booking_start_naive = datetime.combine(booking.time_slot.date, booking.time_slot.start_time)
+        booking_end_naive = datetime.combine(booking.time_slot.date, booking.time_slot.end_time)
+
+        # Make the combined datetimes timezone-aware
+        booking_start = timezone.make_aware(booking_start_naive)
+        booking_end = timezone.make_aware(booking_end_naive)
+
+        # Categorize as past or upcoming based on the current datetime
+        if booking_end < current_datetime:
+            past_bookings.append(booking)
+        else:
+            upcoming_bookings.append(booking)
 
     context = {
-        'bookings': bookings,
+        'past_bookings': past_bookings,
+        'upcoming_bookings': upcoming_bookings
     }
 
     return render(request, 'bookings/my_bookings.html', context)
@@ -130,35 +155,45 @@ def cancel_booking(request, slug):
     # Get the booking object by ID
     booking = get_object_or_404(Booking, slug=slug, user=request.user)
 
-    # Ensure that the booking is not in the past (optional)
-    if booking.time_slot.date < timezone.now().date():
-        return render(request, 'bookings/booking_error.html', {
-            'message': 'You cannot cancel bookings in the past.'
-        })
+    if (request.user == booking.user):
 
-    # Cancel the booking (delete it)
-    booking.delete()
+        # Ensure that the booking is not in the past (optional)
+        if booking.time_slot.date < timezone.now().date():
+            return render(request, 'bookings/booking_error.html', {
+                'message': 'You cannot cancel bookings in the past.'
+            })
 
-    return redirect('my-bookings')  # Redirect to the user's bookings page
+        # Cancel the booking (delete it)
+        booking.delete()
+        messages.success(request, "Booking successfully deleted.")
+        return redirect('my-bookings')  # Redirect to the user's bookings page
+    else:
+        messages.error(request, "You are not authorized to edit this booking.")
+        return redirect('my-bookings')  # Redirect to a safe page
 
 @login_required
 def edit_booking_view(request, slug):
     """Edit an existing booking."""
     booking = get_object_or_404(Booking, slug=slug)
 
-    if request.method == 'POST':
-        form = BookingForm(request.POST, instance=booking)
-        if form.is_valid():
-            form.save()  # Save the updated booking
-            messages.success(request, "Booking successfully updated.")
-            return redirect('my-bookings')
-    else:
-        form = BookingForm(instance=booking)
+    if (request.user == booking.user):
 
-    return render(request, 'bookings/edit_booking.html', {
-        'form': form,
-        'booking': booking
-    })
+        if request.method == 'POST':
+            form = BookingForm(request.POST, instance=booking)
+            if form.is_valid():
+                form.save()  # Save the updated booking
+                messages.success(request, "Booking successfully updated.")
+                return redirect('my-bookings')
+        else:
+            form = BookingForm(instance=booking)
+
+        return render(request, 'bookings/edit_booking.html', {
+            'form': form,
+            'booking': booking
+        })
+    else:
+        messages.error(request, "You are not authorized to edit this booking.")
+        return redirect('my-bookings')  # Redirect to a safe page
 
 @login_required
 def change_time_slot_view(request, booking_slug):
