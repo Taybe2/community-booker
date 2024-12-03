@@ -1,21 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
   <h1>Your Bookings</h1>
 
   {% if bookings %}
-    <ul>
+    <ul class="list-group">
       {% for booking in bookings %}
-        <li>
-          <h4>{{ booking.occasion }}</h4>
-          <p><strong>Community Centre:</strong> {{ booking.community_centre.name }}</p>
-          <p><strong>Time Slot:</strong> {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}</p>
-          <p><a href="{% url 'edit-booking' booking.slug %}">Edit Booking</a></p>
-          <p><a href="{% url 'cancel-booking' booking.slug %}">Cancel Booking</a></p>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-12 col-md-8">
+              <h4>{{ booking.occasion }}</h4>
+              <p><strong>Community Centre:</strong> {{ booking.community_centre.name }}</p>
+              <p><strong>Date:</strong> {{ booking.time_slot.date }}</p>
+              <p><strong>Time:</strong> {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}</p>
+              <p><strong>Notes:</strong> {{ booking.notes }}</p>
+            </div>
+            <div class="col-12 col-md-4 d-grid gap-0 justify-content-md-center align-items-center p-4 text-center">
+              <p><a type="button" class="btn btn-secondary btn-mybookings" href="{% url 'edit-booking' booking.slug %}">Edit Booking</a></p>
+              <p><a type="button" class="btn btn-outline-danger btn-mybookings" href="{% url 'cancel-booking' booking.slug %}">Cancel Booking</a></p>
+            </div>
+          </div>
         </li>
       {% endfor %}
     </ul>
   {% else %}
     <p>You have no bookings yet.</p>
   {% endif %}
+</div>
 {% endblock %}

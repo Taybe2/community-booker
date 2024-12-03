@@ -37,6 +37,11 @@
     text-align: center;
 }
 
+/* My bookings Page */
+.btn-mybookings {
+    min-width: 10rem;
+}
+
 @media screen and (min-width: 577px) {
     .container-welcome div {
         margin: 0 auto;
