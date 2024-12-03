@@ -1,5 +1,6 @@
 from datetime import timedelta
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from community_centre.models import CommunityCentre
@@ -106,4 +107,55 @@ def create_booking_view(request, time_slot_id):
     return render(request, 'bookings/create_booking.html', {
         'form': form,
         'time_slot': time_slot,
+    })
+
+@login_required
+def my_bookings_view(request):
+    """Display the user's bookings and allow editing or cancellation."""
+    # Get the current user
+    user = request.user
+
+    # Fetch the bookings made by the logged-in user
+    bookings = Booking.objects.filter(user=user).order_by('-created_at')  # You can order by booking creation date
+
+    context = {
+        'bookings': bookings,
+    }
+
+    return render(request, 'bookings/my_bookings.html', context)
+
+@login_required
+def cancel_booking(request, slug):
+    """Cancel an existing booking."""
+    # Get the booking object by ID
+    booking = get_object_or_404(Booking, slug=slug, user=request.user)
+
+    # Ensure that the booking is not in the past (optional)
+    if booking.time_slot.date < timezone.now().date():
+        return render(request, 'bookings/booking_error.html', {
+            'message': 'You cannot cancel bookings in the past.'
+        })
+
+    # Cancel the booking (delete it)
+    booking.delete()
+
+    return redirect('my-bookings')  # Redirect to the user's bookings page
+
+@login_required
+def edit_booking_view(request, slug):
+    """Edit an existing booking."""
+    booking = get_object_or_404(Booking, slug=slug)
+
+    if request.method == 'POST':
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            form.save()  # Save the updated booking
+            messages.success(request, "Booking successfully updated.")
+            return redirect('my-bookings')
+    else:
+        form = BookingForm(instance=booking)
+
+    return render(request, 'bookings/edit_booking.html', {
+        'form': form,
+        'booking': booking
     })
