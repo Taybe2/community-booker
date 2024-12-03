@@ -159,3 +159,8 @@ def edit_booking_view(request, slug):
         'form': form,
         'booking': booking
     })
+
+@login_required
+def change_time_slot_view(request, booking_slug):
+    """Redirect to the time slots view with the booking slug."""
+    return redirect('time_slots', booking_slug=booking_slug)
