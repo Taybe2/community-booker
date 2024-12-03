@@ -1,4 +1,4 @@
-console.log("hello")
+
 const deleteModal = new bootstrap.Modal(document.getElementById("cancelBookingModal"));
 const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("confirmCancelButton");
