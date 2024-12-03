@@ -14,7 +14,9 @@
               <p><strong>Community Centre:</strong> {{ booking.community_centre.name }}</p>
               <p><strong>Date:</strong> {{ booking.time_slot.date }}</p>
               <p><strong>Time:</strong> {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}</p>
-              <p><strong>Notes:</strong> {{ booking.notes }}</p>
+              {% if booking.notes %}
+                <p><strong>Notes:</strong> {{ booking.notes }}</p>
+              {% endif %}
             </div>
             <div class="col-12 col-md-4 d-grid gap-0 justify-content-md-center align-items-center p-4 text-center">
               <p><a type="button" class="btn btn-secondary btn-mybookings" href="{% url 'edit-booking' booking.slug %}">Edit Booking</a></p>
