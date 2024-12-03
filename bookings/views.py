@@ -65,6 +65,7 @@ def time_slot_view(request, booking_slug=None):
             booking.save()
             messages.success(request, "Time slot successfully updated.")
             return redirect('edit-booking', slug=booking.slug)
+        
         if selected_slot_id:
             # Save the booking in the database or perform other actions
             return redirect('create-booking', time_slot_id=selected_slot_id)
@@ -72,7 +73,9 @@ def time_slot_view(request, booking_slug=None):
     booking = None
     if booking_slug:
         booking = get_object_or_404(Booking, slug=booking_slug)
-    print(booking)
+        if (request.user != booking.user):
+            messages.error(request, "You are not authorized to edit this booking.")
+            return redirect('home')  # Redirect to a safe page
 
     context = {
         'slots_by_day': slots_by_day,
@@ -153,7 +156,7 @@ def my_bookings_view(request):
 def cancel_booking(request, slug):
     """Cancel an existing booking."""
     # Get the booking object by ID
-    booking = get_object_or_404(Booking, slug=slug, user=request.user)
+    booking = get_object_or_404(Booking, slug=slug)
 
     if (request.user == booking.user):
 
@@ -198,4 +201,10 @@ def edit_booking_view(request, slug):
 @login_required
 def change_time_slot_view(request, booking_slug):
     """Redirect to the time slots view with the booking slug."""
-    return redirect('time_slots', booking_slug=booking_slug)
+    booking = get_object_or_404(Booking, slug=booking_slug)
+
+    if (request.user == booking.user):
+        return redirect('time_slots', booking_slug=booking_slug)
+    else:
+        messages.error(request, "You are not authorized to edit this booking.")
+        return redirect('home')  # Redirect to a safe page

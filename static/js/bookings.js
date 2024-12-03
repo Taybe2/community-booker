@@ -16,7 +16,6 @@ const deleteConfirm = document.getElementById("confirmCancelButton");
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
         let bookingSlug = e.target.getAttribute("data-booking-slug");
-        let bookingName = e.target.getAttribute("data-booking-name");
         deleteConfirm.href = `/booking/${bookingSlug}/cancel`;
         deleteModal.show();
     });
