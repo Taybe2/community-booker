@@ -61,10 +61,10 @@ def time_slot_view(request, booking_slug=None):
         if booking_slug:
             # Edit existing booking
             booking = get_object_or_404(Booking, slug=booking_slug)
-            booking.time_slot = time_slot
-            booking.save()
-            messages.success(request, "Time slot successfully updated.")
-            return redirect('edit-booking', slug=booking.slug)
+            # booking.time_slot = time_slot
+            # booking.save()
+            # messages.success(request, "Time slot successfully updated.")
+            return redirect('edit-booking', slug=booking.slug, slot_id=selected_slot_id)
         
         if selected_slot_id:
             # Save the booking in the database or perform other actions
@@ -175,28 +175,37 @@ def cancel_booking(request, slug):
         return redirect('my-bookings')  # Redirect to a safe page
 
 @login_required
-def edit_booking_view(request, slug):
+def edit_booking_view(request, slug, slot_id=None):
     """Edit an existing booking."""
+    # Retrieve the booking
     booking = get_object_or_404(Booking, slug=slug)
 
-    if (request.user == booking.user):
+    # Retrieve the new time slot if provided
+    new_time_slot = get_object_or_404(TimeSlot, id=slot_id) if slot_id else None
 
-        if request.method == 'POST':
-            form = BookingForm(request.POST, instance=booking)
-            if form.is_valid():
-                form.save()  # Save the updated booking
-                messages.success(request, "Booking successfully updated.")
-                return redirect('my-bookings')
-        else:
-            form = BookingForm(instance=booking)
-
-        return render(request, 'bookings/edit_booking.html', {
-            'form': form,
-            'booking': booking
-        })
-    else:
+    # Ensure the user is authorized to edit the booking
+    if request.user != booking.user:
         messages.error(request, "You are not authorized to edit this booking.")
-        return redirect('my-bookings')  # Redirect to a safe page
+        return redirect('my-bookings')
+
+    # Handle form submission
+    if request.method == 'POST':
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            if new_time_slot:
+                booking.time_slot = new_time_slot
+            booking.save()
+            messages.success(request, "Booking successfully updated.")
+            return redirect('my-bookings')
+    else:
+        form = BookingForm(instance=booking)
+
+    return render(request, 'bookings/edit_booking.html', {
+        'form': form,
+        'booking': booking,
+        'new_time_slot': new_time_slot,
+    })
 
 @login_required
 def change_time_slot_view(request, booking_slug):

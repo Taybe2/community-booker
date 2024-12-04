@@ -7,7 +7,11 @@
 {% block content %}
   <div class="container">
     <h1>Edit Booking</h1>
-    <p>Time Slot: {{ booking.time_slot.date }} from {{ booking.time_slot.start_time }} to {{ booking.time_slot.end_time }}</p>
+    {% if new_time_slot %}
+      <p>New Time Slot: {{ new_time_slot.date }} from {{ new_time_slot.start_time }} to {{ new_time_slot.end_time }}</p>
+    {% else %}
+      <p>Time Slot: {{ booking.time_slot.date }} from {{ booking.time_slot.start_time }} to {{ booking.time_slot.end_time }}</p>
+    {% endif %}
     <p>
       <a href="{% url 'change-time-slot' booking.slug %}">Change Time Slot</a>
     </p>

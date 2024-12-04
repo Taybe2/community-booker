@@ -17,7 +17,7 @@
             {% if booking != None %}
                 <h3>Reshedule Your Booking: {{ booking.occasion }}</h3>
                 <p><strong>Current Time Slot: </strong><i>{{ booking.time_slot.date }} from {{ booking.time_slot.start_time }} to {{ booking.time_slot.end_time }}</i></p>
-                <p>Select a new time slot for your booking and click "Update Booking" button to change date and/or time of your booking.</p>                
+                <p>Select a new time slot for your booking and click "Continue" button to change date and/or time of your booking.</p>                
             {% else %}
                 <h3>Time Slots for Booking</h3>
                 <p><i>{{ week_start|date:"F d, Y" }} to {{ week_end|date:"F d, Y" }}</i></p>
@@ -74,7 +74,7 @@
             {% if booking != None %}
                 <!-- Go back to the booking edit view button-->
                 <a href="{% if booking %}{% url 'edit-booking' slug=booking.slug %}{% else %}{% url 'my-bookings' %}{% endif %}" class="btn btn-secondary">Back to Edit</a>
-                <button type="submit" class="btn btn-primary submit-button" disabled>Update Booking</button>
+                <button type="submit" class="btn btn-primary submit-button" disabled>Continue</button>
             {%else%}
                 <button type="submit" class="btn btn-primary submit-button" disabled>Book Selected Time Slot</button>
             {% endif %}
