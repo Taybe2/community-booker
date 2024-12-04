@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from community_centre.models import CommunityCentre
 from .models import TimeSlot, Booking
 from .forms import BookingForm
+from bookings.utils import is_time_slot_valid_and_available
 
 # Create your views here.
 
@@ -94,6 +95,12 @@ def create_booking_view(request, time_slot_id):
     """Handle booking creation for a selected time slot."""
     time_slot = get_object_or_404(TimeSlot, id=time_slot_id)
 
+    # Validate the time slot
+    is_valid, error_message = is_time_slot_valid_and_available(time_slot)
+    if not is_valid:
+        messages.error(request, error_message)
+        return redirect('time_slots')  # Redirect back to time slots
+    
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -182,11 +189,14 @@ def edit_booking_view(request, slug, slot_id=None):
 
     # Retrieve the new time slot if provided
     new_time_slot = get_object_or_404(TimeSlot, id=slot_id) if slot_id else None
+    
+    if new_time_slot:
 
-    # Ensure the user is authorized to edit the booking
-    if request.user != booking.user:
-        messages.error(request, "You are not authorized to edit this booking.")
-        return redirect('my-bookings')
+        # Validate the new time slot
+        is_valid, error_message = is_time_slot_valid_and_available(new_time_slot, exclude_booking_id=booking.id)
+        if not is_valid:
+            messages.error(request, error_message)
+            return redirect('time_slots', booking_slug=booking.slug)
 
     # Handle form submission
     if request.method == 'POST':

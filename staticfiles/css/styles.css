@@ -36,3 +36,52 @@
     margin: 0.5rem 0.2rem;
     text-align: center;
 }
+
+/* My bookings Page */
+.btn-mybookings {
+    min-width: 10rem;
+}
+.item-past {
+    color:#bababa;
+}
+
+@media screen and (min-width: 577px) {
+    .container-welcome div {
+        margin: 0 auto;
+    }
+    .text-center.timeslot-header {
+        text-align: left !important;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .container-welcome div {
+        margin-left: 3.5rem;
+    }
+}
+
+@media screen and (min-width: 961px) {
+    .container-welcome div {
+        margin-left: 8.5rem;
+    }
+}
+
+@media screen and (min-width: 1141px) {
+    .container-welcome {
+        background-position: 0% 20%;
+    }
+    .container-welcome div {
+        margin-left: 11.5rem;
+        max-width: 25rem;
+    }
+}
+
+@media screen and (min-width: 1321px) {
+    .container-welcome {
+        background-position: 0% 20%;
+    }
+    .container-welcome div {
+        margin-left: 14.5rem;
+        max-width: 30rem;
+    }
+}

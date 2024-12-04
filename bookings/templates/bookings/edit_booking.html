@@ -6,7 +6,7 @@
 
 {% block content %}
   <div class="container">
-    <h1>Edit Booking</h1>
+    <h1>Edit Booking - {{ booking.occasion }}</h1>
     {% if new_time_slot %}
       <p>New Time Slot: {{ new_time_slot.date }} from {{ new_time_slot.start_time }} to {{ new_time_slot.end_time }}</p>
     {% else %}
