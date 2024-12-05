@@ -21,4 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
             messageContainer.style.display = 'block';
         }
     });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && document.activeElement.tagName === 'LABEL') {
+            const label = document.activeElement;
+            const inputId = label.getAttribute('for');
+            const radioInput = document.getElementById(inputId);
+    
+            if (radioInput && !radioInput.disabled) {
+                radioInput.checked = true;
+                // Trigger change event if needed
+                radioInput.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
+             // Prevent default only for Enter key to avoid interference with Tab
+            event.preventDefault();
+        }
+    });
 });
