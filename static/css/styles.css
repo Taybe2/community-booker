@@ -38,6 +38,7 @@
 .btn-group-toggle .btn {
     margin: 0.5rem 0.2rem;
     text-align: center;
+    width: 90%
 }
 
 /* Dynamic error message */
@@ -65,18 +66,22 @@
     color:#565666;
 }
 
-@media screen and (min-width: 577px) {
+@media screen and (min-width: 576px) {
     .container-welcome div {
         margin: 0 auto;
     }
-    .text-center.timeslot-header {
-        text-align: left !important;
+    
+    .btn-group-toggle .btn {
+        width: auto;
     }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
     .container-welcome div {
         margin-left: 3.5rem;
+    }
+    .text-center.timeslot-header {
+        text-align: left !important;
     }
 }
 
