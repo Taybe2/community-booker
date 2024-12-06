@@ -21,40 +21,39 @@
                 <h3>Time Slots for Booking</h3>
                 <p>Choose an available time slot and click "Book Selected Time Slot" to make your booking.</p>
             {% endif %}
-            <p><i>Time Slots from {{ week_start|date:"F d, Y" }} to {{ week_end|date:"F d, Y" }}</i></p>
+            <p><i>Time Slots from {{ display_start|date:"F d, Y" }} to {{ display_end|date:"F d, Y" }}</i></p>
         </div>
         <div class="col-md-4 d-flex justify-content-center justify-content-md-end mb-4 mb-md-0">
             <!-- Navigation Buttons -->
-            <div class="btn-group" role="group" aria-label="Week navigation controls">
-                <a type="button" aria-label="View time slots for the previous week" href="?week_offset={{ week_offset|add:'-1' }}" class="btn btn-outline-primary">Previous Week</a>
-                <a type="button" aria-label="View time slots for the next week" href="?week_offset={{ week_offset|add:'1' }}" class="btn btn-outline-primary">Next Week</a>
-            </div>
+            <!-- Previous Week Button -->
+            {% if day_offset > 0 %}
+                <a href="?day_offset={{ day_offset|add:'-1' }}" aria-label="View time slots for previous 7 days" class="btn btn-outline-primary">Previous</a>
+            {% else %}
+                <!-- Hide the button if it's the current week -->
+                <span></span>
+            {% endif %}
+            <a href="?day_offset={{ day_offset|add:'1' }}" aria-label="View time slots for next 7 days" class="btn btn-primary ms-2">Next</a>
         </div>
     </div>
     <!-- Select Slot Form -->
     <form id="time-slot-form" method="post" autocomplete="off">
         {% csrf_token %}
         {% for day, slots in slots_by_day.items %}
-            <div class="day-section d-flex justify-content-between align-items-start align-items-sm-center {% if day <= today %}text-muted{% endif %}">
+            <div class="day-section d-flex justify-content-between align-items-start align-items-sm-center">
                 <h4 class="flex-shrink-1">
-                    {{ day|date:"D"|upper }}<br>{{day|date:"d"|upper}}<br>{{day|date:"M"|upper }}
+                    {{ day|date:"D"|upper }}<br>{{ day|date:"d"|upper }}<br>{{ day|date:"M"|upper }}
                 </h4>
             
                 {% if slots %}
                     <div class="btn-group-toggle w-100" role="group">
-                        {% if day == today %}<span class="d-flex flex-nowrap">TODAY</span>{% endif %}
                         {% for slot_info in slots %}
-                            <input type="radio"class="btn-check" role="radio" name="time_slot" id="{{ slot_info.slot.id }}" value="{{ slot_info.slot.id }}" 
-                                       {% if slot_info.has_booking or day <= today %}disabled {% endif %}>
-                            <label class="btn {% if slot_info.has_booking %} btn-primary disabled{% else %} btn-outline-primary{% endif %}" for="{{ slot_info.slot.id }}" tabindex="0">
+                            <input type="radio" class="btn-check" role="radio" name="time_slot" id="{{ slot_info.slot.id }}" value="{{ slot_info.slot.id }}" 
+                                   {% if slot_info.has_booking %}disabled{% endif %}>
+                            <label class="btn {% if slot_info.has_booking %} disabled {% else %}btn-outline {% endif %}btn-timeslot" 
+                                   for="{{ slot_info.slot.id }}" tabindex="0">
                                 {{ slot_info.slot.start_time|date:"g A" }} - {{ slot_info.slot.end_time|date:"g A" }}
                                 {% if slot_info.has_booking %}
-                                    <span> Booked for</span>
-                                    {% if slot_info.slot.booking.occasion_type == 'public' %}
-                                        <span class="span-block">{{ slot_info.slot.booking.occasion }}</span>
-                                    {% else %}
-                                        <span class="span-block">Private Event</span>
-                                    {% endif %}
+                                    <span class="span-block">Booked for {{ slot_info.slot.booking.occasion|default:"Unavailable" }}</span>
                                 {% else %}
                                     <span class="span-block">Available</span>
                                 {% endif %}
@@ -62,24 +61,19 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    <p class="w-100">
-                        {% if day == today %}TODAY<br>{% endif %}
-                        No time slots available for this day.
-                    </p>
+                    <p class="w-100">No time slots available for this day.</p>
                 {% endif %}
             </div>
         {% endfor %}
         <div id="message-container" aria-live="assertive"></div>
         <div class="d-flex justify-content-between">
-            {% if booking != None %}
-                <!-- Go back to the booking edit view button-->
-                <a href="{% if booking %}{% url 'edit-booking' slug=booking.slug %}{% else %}{% url 'my-bookings' %}{% endif %}" class="btn btn-secondary">Back to Edit</a>
-                <button type="submit" class="btn btn-primary submit-button">Continue</button>
-            {%else%}
-                <button type="submit" class="btn btn-primary submit-button">Book Selected Time Slot</button>
+            {% if booking %}
+                <a href="{% url 'edit-booking' slug=booking.slug %}" class="btn btn-secondary">Back to Edit</a>
             {% endif %}
+            <button type="submit" class="btn btn-primary submit-button">Book Selected Time Slot</button>
         </div>
     </form>
+    
 </div>
 {% endblock %}
 

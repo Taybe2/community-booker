@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+body {
+    font-family: "PT Sans", sans-serif;
+}
 
 .span-inline-block {
     display: inline-block;
@@ -35,10 +39,30 @@
     margin: 0 1em
 }
 
-.btn-group-toggle .btn {
+.btn-group-toggle .btn-timeslot {
     margin: 0.5rem 0.2rem;
     text-align: center;
-    width: 90%
+    width: 90%;
+}
+.btn-timeslot {
+  color: #312f2f;
+  background-color: #fff;
+  border-color: #312f2f ;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 10;
+}
+
+.btn-timeslot:hover,
+.btn-timeslot:active,
+.btn-timeslot:focus,
+.btn-timeslot.active,
+.btn-timeslot.disabled,
+.btn-check:checked + .btn-timeslot{
+  /* let's darken #004E64 a bit for hover effect */
+  background: #604D53;
+  color: #ffffff;
+  border-color: #604D53;
 }
 
 /* Dynamic error message */
@@ -48,13 +72,7 @@
 }
 
 .error-message {    
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+    padding: 0.5rem 0;
 }
 
 
@@ -71,7 +89,7 @@
         margin: 0 auto;
     }
     
-    .btn-group-toggle .btn {
+    .btn-group-toggle .btn-timeslot {
         width: auto;
     }
 }
