@@ -1,5 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* Define color variables */
+:root {
+    --primary-color: #557C83 ; /* Main color for timeslots and other highlights */
+    --secondary-color: #fff; /* Background color for buttons */
+    --hover-color: #557C83 ;  /* Hover state color */
+    --border-color: #557C83 ; /* Border color for buttons and elements */
+    --text-muted: #557C83;  /* Muted text color for past bookings */
+}
+
+body {
+    font-family: "PT Sans", sans-serif;
+}
 
 .span-inline-block {
     display: inline-block;
@@ -17,7 +29,7 @@
     background-image: linear-gradient(45deg, rgba(245, 70, 66, 0.48), rgba(8, 83, 156, 0.5)), url(../images/woman.jpg);
     background-size: cover;
     background-position: center right;
-    color: #fff;
+    color: var(--secondary-color);
 }
 .container-welcome div {
     max-width: 20rem;
@@ -33,7 +45,7 @@
 }
 
 .day-section h4 {
-    margin: 0 1em
+    margin: 0 1em;
 }
 
 .btn-group-toggle .btn-timeslot {
@@ -42,12 +54,12 @@
     width: 90%;
 }
 .btn-timeslot {
-  color: #312f2f;
-  background-color: #fff;
-  border-color: #312f2f ;
-  font-weight: 500;
-  letter-spacing: 0.04rem;
-  border-radius: 10;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border-color: var(--border-color);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border-radius: 10px;
 }
 
 .btn-timeslot:hover,
@@ -55,11 +67,10 @@
 .btn-timeslot:focus,
 .btn-timeslot.active,
 .btn-timeslot.disabled,
-.btn-check:checked + .btn-timeslot{
-  /* let's darken #004E64 a bit for hover effect */
-  background: #604D53;
-  color: #ffffff;
-  border-color: #604D53;
+.btn-check:checked + .btn-timeslot {
+    background: var(--hover-color);
+    color: var(--secondary-color);
+    border-color: var(--hover-color);
 }
 
 /* Dynamic error message */
@@ -72,13 +83,12 @@
     padding: 0.5rem 0;
 }
 
-
-/*** My bookings Page ***/
+/*** My Bookings Page ***/
 .btn-mybookings {
     min-width: 10rem;
 }
 .item-past {
-    color:#565666;
+    color: var(--text-muted);
 }
 
 @media screen and (min-width: 576px) {
