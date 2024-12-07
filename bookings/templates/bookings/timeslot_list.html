@@ -16,7 +16,7 @@
         <div class="col-md-8">
             {% if booking != None %}
                 <h3>Reshedule Your Booking: {{ booking.occasion }} - {{ booking.time_slot.date }} from {{ booking.time_slot.start_time }} to {{ booking.time_slot.end_time }}</h3>
-                <p>Select a new time slot for your booking and click "Continue" button to change date and/or time of your booking.</p>
+                <p>Select a new time slot for your booking and click "Reschedule Booking" button to change date and/or time of your booking.</p>
             {% else %}
                 <h3>Time Slots for Booking</h3>
                 <p>Choose an available time slot and click "Book Selected Time Slot" to make your booking.</p>
@@ -66,12 +66,18 @@
             </div>
         {% endfor %}
         <div id="message-container" aria-live="assertive"></div>
-        <div class="d-flex justify-content-between">
-            {% if booking %}
+        
+        {% if booking %}
+            <div class="d-flex justify-content-between">
                 <a href="{% url 'edit-booking' slug=booking.slug %}" class="btn btn-secondary">Back to Edit</a>
-            {% endif %}
+                <button type="submit" class="btn btn-primary submit-button">Reschedule Booking</button>
+            </div>
+        {% else %}
+        <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-primary submit-button">Book Selected Time Slot</button>
         </div>
+        {% endif %}
+        
     </form>
     
 </div>
