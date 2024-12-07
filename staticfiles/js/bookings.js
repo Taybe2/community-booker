@@ -1,6 +1,8 @@
 const deleteModal = new bootstrap.Modal(document.getElementById("cancelBookingModal"));
 const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("confirmCancelButton");
+const modalTitle = document.getElementById("cancelBookingModalLabel");
+const modalContent = document.getElementById("cancelBookingModalText");
 
 /*
  * Initializes deletion functionality for the provided delete(cancel booking) buttons.
@@ -19,6 +21,12 @@ for (let button of deleteButtons) {
         if (e.type === "click" || (e.type === "keydown" && (e.key === "Enter" || e.keyCode === 13))) {
             e.preventDefault(); // Prevent default action for Enter key
             let bookingSlug = button.getAttribute("data-booking-slug");
+            let bookingName = button.getAttribute("data-booking-name");
+            let bookingDetails = button.getAttribute("data-booking-details")
+
+            // Update the modal title and confirm button href
+            modalTitle.textContent = `Cancel Booking: ${bookingName}`
+            modalContent.innerHTML = `Are you sure you want to cancel booking <strong>${bookingName}</strong> on <strong>${bookingDetails}</strong>? This action cannot be undone.`;
             deleteConfirm.href = `/booking/${bookingSlug}/cancel`;
             deleteModal.show();
         }

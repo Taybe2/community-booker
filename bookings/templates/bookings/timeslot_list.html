@@ -53,7 +53,11 @@
                                    for="{{ slot_info.slot.id }}" tabindex="0">
                                 {{ slot_info.slot.start_time|date:"g A" }} - {{ slot_info.slot.end_time|date:"g A" }}
                                 {% if slot_info.has_booking %}
-                                    <span class="span-block">Booked for {{ slot_info.slot.booking.occasion|default:"Unavailable" }}</span>
+                                    {% if slot_info.slot.booking.occasion_type != "private" %}
+                                        <span class="span-block">Booked for {{ slot_info.slot.booking.occasion|default:"Unavailable" }}</span>
+                                    {% else %}
+                                        <span class="span-block">Booked for Private Event</span>
+                                    {% endif %}
                                 {% else %}
                                     <span class="span-block">Available</span>
                                 {% endif %}
