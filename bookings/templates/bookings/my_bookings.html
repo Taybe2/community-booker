@@ -44,7 +44,8 @@
             <a type="button" 
                   class="btn btn-danger btn-mybookings btn-delete" 
                   data-bs-toggle="modal" 
-                  data-bs-target="#cancelBookingModal" data-booking-name="{{ booking.name }}"
+                  data-bs-target="#cancelBookingModal" data-booking-name="{{ booking.occasion }}"
+                  data-booking-details="{{ booking.time_slot.date }}, {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}"
                   data-booking-slug="{{ booking.slug }}" tabindex="0">Cancel Booking</a>
           </div>
         </div>
@@ -61,11 +62,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="cancelBookingModalLabel">Cancel Booking</h5>
+        <h5 class="modal-title" id="cancelBookingModalLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        Are you sure you want to cancel this booking? This action cannot be undone.
+      <div class="modal-body" id="cancelBookingModalText">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
