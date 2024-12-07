@@ -66,7 +66,7 @@ def time_slot_view(request, booking_slug=None):
         if request.user != booking.user:
             messages.error(request, "You are not authorized to edit this booking.")
             return redirect('home')  # Redirect to a safe page
-    print(day_offset)
+    
     context = {
         'slots_by_day': slots_by_day,
         'display_start': display_start,
@@ -170,7 +170,7 @@ def cancel_booking(request, slug):
         return redirect('my-bookings')  # Redirect to the user's bookings page
     else:
         messages.error(request, "You are not authorized to edit this booking.")
-        return redirect('my-bookings')  # Redirect to a safe page
+        return redirect('home')  # Redirect to a safe page
 
 @login_required
 def edit_booking_view(request, slug, slot_id=None):
@@ -178,35 +178,40 @@ def edit_booking_view(request, slug, slot_id=None):
     # Retrieve the booking
     booking = get_object_or_404(Booking, slug=slug)
 
-    # Retrieve the new time slot if provided
-    new_time_slot = get_object_or_404(TimeSlot, id=slot_id) if slot_id else None
-    
-    if new_time_slot:
+    if (request.user == booking.user):
 
-        # Validate the new time slot
-        is_valid, error_message = is_time_slot_valid_and_available(new_time_slot, exclude_booking_id=booking.id)
-        if not is_valid:
-            messages.error(request, error_message)
-            return redirect('time_slots', booking_slug=booking.slug)
+        # Retrieve the new time slot if provided
+        new_time_slot = get_object_or_404(TimeSlot, id=slot_id) if slot_id else None
+        
+        if new_time_slot:
 
-    # Handle form submission
-    if request.method == 'POST':
-        form = BookingForm(request.POST, instance=booking)
-        if form.is_valid():
-            booking = form.save(commit=False)
-            if new_time_slot:
-                booking.time_slot = new_time_slot
-            booking.save()
-            messages.success(request, "Booking successfully updated.")
-            return redirect('my-bookings')
+            # Validate the new time slot
+            is_valid, error_message = is_time_slot_valid_and_available(new_time_slot, exclude_booking_id=booking.id)
+            if not is_valid:
+                messages.error(request, error_message)
+                return redirect('time_slots', booking_slug=booking.slug)
+
+        # Handle form submission
+        if request.method == 'POST':
+            form = BookingForm(request.POST, instance=booking)
+            if form.is_valid():
+                booking = form.save(commit=False)
+                if new_time_slot:
+                    booking.time_slot = new_time_slot
+                booking.save()
+                messages.success(request, "Booking successfully updated.")
+                return redirect('my-bookings')
+        else:
+            form = BookingForm(instance=booking)
+
+        return render(request, 'bookings/edit_booking.html', {
+            'form': form,
+            'booking': booking,
+            'new_time_slot': new_time_slot,
+        })
     else:
-        form = BookingForm(instance=booking)
-
-    return render(request, 'bookings/edit_booking.html', {
-        'form': form,
-        'booking': booking,
-        'new_time_slot': new_time_slot,
-    })
+        messages.error(request, "You are not authorized to edit this booking.")
+        return redirect('home')  # Redirect to a safe page
 
 @login_required
 def change_time_slot_view(request, booking_slug):
