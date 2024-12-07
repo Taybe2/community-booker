@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from community_centre.models import CommunityCentre
 from .models import TimeSlot, Booking
 from .forms import BookingForm
@@ -99,7 +100,6 @@ def create_booking_view(request, time_slot_id):
             booking.user = request.user  # Associate the booking with the logged-in user
             booking.time_slot = time_slot
             booking.community_centre = community_centre
-            print(booking)
             booking.save()
             messages.success(request, "Booking successfully created.")
             return redirect('my-bookings')  # Redirect to My Bookings page
@@ -143,9 +143,18 @@ def my_bookings_view(request):
         else:
             upcoming_bookings.append(booking)
 
+    past_paginator = Paginator(past_bookings, 7)  # Show 7 past bookings per page
+    upcoming_paginator = Paginator(upcoming_bookings, 7)  # Show 7 upcoming bookings per page
+
+    past_page_number = request.GET.get('past_page', 1)  # Get the page number for past bookings
+    upcoming_page_number = request.GET.get('upcoming_page', 1)  # Get the page number for upcoming bookings
+
+    past_page_obj = past_paginator.get_page(past_page_number)
+    upcoming_page_obj = upcoming_paginator.get_page(upcoming_page_number)
+    
     context = {
-        'past_bookings': past_bookings,
-        'upcoming_bookings': upcoming_bookings
+        'past_bookings': past_page_obj,
+        'upcoming_bookings': upcoming_page_obj,
     }
 
     return render(request, 'bookings/my_bookings.html', context)
