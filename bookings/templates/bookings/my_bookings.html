@@ -7,57 +7,83 @@
     <h1>Your Bookings</h1>
     <a type="button" class="btn btn-primary" href="{% url 'time_slots' %}">Make a New Booking</a>
   </div>
-  {% if past_bookings or upcoming_bookings %}
-    <ul class="list-group">
-      {% for booking in past_bookings %}
-        <li class="list-group-item item-past">
-          <div class="row">
-            <div class="col-12 col-md-8">
-              <h4>{{ booking.occasion }}</h4>
-              <p><strong>Community Centre:</strong> {{ booking.community_centre.name }}</p>
-              <p><strong>Date:</strong> {{ booking.time_slot.date }}</p>
-              <p><strong>Time:</strong> {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}</p>
-              {% if booking.notes %}
-                <p><strong>Notes:</strong> {{ booking.notes }}</p>
-              {% else %}
-              <p>No notes</p>
-              {% endif %}
-            </div>
-          </div>
-        </li>
-      {% endfor %}
-      {% for booking in upcoming_bookings %}
-      <li class="list-group-item">
-        <div class="row">
-          <div class="col-12 col-md-8">
-            <h4>{{ booking.occasion }}</h4>
-            <p><strong>Community Centre:</strong> {{ booking.community_centre.name }}</p>
-            <p><strong>Date:</strong> {{ booking.time_slot.date }}</p>
-            <p><strong>Time:</strong> {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}</p>
-            <p><strong>{{ booking.occasion_type | capfirst }} Event</strong></p>
-            {% if booking.notes %}
-              <p><strong>Notes:</strong> {{ booking.notes }}</p>
-            {% else %}
-            <p>No notes</p>
-            {% endif %}
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 d-grid gap-3 mx-auto gap-md-0 justify-content-md-center align-items-center p-4 text-center">
-            <a type="button" class="btn btn-primary btn-mybookings" href="{% url 'edit-booking' booking.slug %}">Edit Booking</a>
-            <a type="button" 
-                  class="btn btn-danger btn-mybookings btn-delete" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#cancelBookingModal" data-booking-name="{{ booking.occasion }}"
-                  data-booking-details="{{ booking.time_slot.date }}, {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}"
-                  data-booking-slug="{{ booking.slug }}" tabindex="0">Cancel Booking
-            </a>
-          </div>
-        </div>
-      </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>You have no bookings yet.</p>
-  {% endif %}
+
+  <!-- Tabs Bookings Navigation -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="past-bookings-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="home" aria-selected="true">Upcoming Bookings</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="upcoming-bookings-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="profile" aria-selected="false">Past Bookings</button>
+    </li>
+  </ul>
+
+  <!-- Tabs Content -->
+  <div class="tab-content" id="myTabContent">
+    <!-- Past Bookings -->
+    <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-bookings-tab">
+      {% if past_bookings %}
+        <ul class="list-group">
+          {% for booking in past_bookings %}
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-12 col-md-8">
+                  <h4>{{ booking.occasion }}</h4>
+                  <p><strong>Community Centre:</strong> {{ booking.community_centre.name }}</p>
+                  <p><strong>Date:</strong> {{ booking.time_slot.date }}</p>
+                  <p><strong>Time:</strong> {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}</p>
+                  {% if booking.notes %}
+                    <p><strong>Notes:</strong> {{ booking.notes }}</p>
+                  {% else %}
+                  <p>No notes</p>
+                  {% endif %}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="mt-4 ms-3">You have no past bookings yet.</p>
+      {% endif %}
+    </div>
+    <!-- Upcoming Bookings -->
+    <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-bookings-tab">
+      {% if upcoming_bookings %}
+        <ul class="list-group">
+          {% for booking in upcoming_bookings %}
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-12 col-md-8">
+                  <h4>{{ booking.occasion }}</h4>
+                  <p><strong>Community Centre:</strong> {{ booking.community_centre.name }}</p>
+                  <p><strong>Date:</strong> {{ booking.time_slot.date }}</p>
+                  <p><strong>Time:</strong> {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}</p>
+                  <p><strong>{{ booking.occasion_type | capfirst }} Event</strong></p>
+                  {% if booking.notes %}
+                    <p><strong>Notes:</strong> {{ booking.notes }}</p>
+                  {% else %}
+                  <p>No notes</p>
+                  {% endif %}
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 d-grid gap-3 mx-auto gap-md-0 justify-content-md-center align-items-center p-4 text-center">
+                  <a type="button" class="btn btn-primary btn-mybookings" href="{% url 'edit-booking' booking.slug %}">Edit Booking</a>
+                  <a type="button" 
+                        class="btn btn-danger btn-mybookings btn-delete" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#cancelBookingModal" data-booking-name="{{ booking.occasion }}"
+                        data-booking-details="{{ booking.time_slot.date }}, {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}"
+                        data-booking-slug="{{ booking.slug }}" tabindex="0">Cancel Booking
+                  </a>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="mt-4 ms-3">You have no upcoming bookings yet.</p>
+      {% endif %}
+    </div>
+  </div>
 </div>
 
 <!-- Delete Confrimation Modal -->

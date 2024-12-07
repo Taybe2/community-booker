@@ -90,8 +90,10 @@ body {
 .btn-mybookings {
     min-width: 10rem;
 }
-.item-past {
-    color: var(--text-muted);
+.tab-content .list-group-item {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
 /*** Account Pages ***/
