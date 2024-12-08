@@ -23,9 +23,6 @@ body {
 }
 
 /*** Navigation ***/
-.navbar-brand img {
-    height: 2.5rem;
-}
 .navbar-light .navbar-brand {
     font-family: Lato, sans-serif;
     color: var(--primary-color);
@@ -49,7 +46,7 @@ body {
 /*** Home Page ***/
 .container-welcome {
     height: 35em;
-    background-image: linear-gradient(45deg, rgba(245, 70, 66, 0.48), rgba(8, 83, 156, 0.5)), url(../images/woman.jpg);
+    background-image: linear-gradient(45deg, rgba(245, 70, 66, 0.9), rgba(8, 83, 156, 0.9)), url(../images/woman.jpg);
     background-size: cover;
     background-position: center right;
     color: var(--secondary-color);
@@ -151,6 +148,9 @@ body {
 }
 
 @media screen and (min-width: 768px) {
+    .container-welcome {
+         background-image: linear-gradient(45deg, rgba(245, 70, 66, 0.48), rgba(8, 83, 156, 0.5)), url(../images/woman.jpg);
+    }
     .container-welcome div {
         margin-left: 3.5rem;
     }
