@@ -23,6 +23,11 @@ body {
     visibility: hidden;
 }
 
+/*** Navigation ***/
+.navbar-brand img {
+    height: 3rem;
+}
+
 /*** Home Page ***/
 .container-welcome {
     height: 35em;
