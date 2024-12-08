@@ -12,26 +12,30 @@
 {% block content %}
 
 <div class="container timeslot-container mt-5">
+    <!-- Time Slot Header -->
     <div class="row justify-content-end align-items-center text-center timeslot-header">
-        <div class="col-md-8">
+        <div class="col-12 text-center">
             {% if booking != None %}
-                <h3>Reshedule Your Booking: {{ booking.occasion }} - {{ booking.time_slot.date }} from {{ booking.time_slot.start_time }} to {{ booking.time_slot.end_time }}</h3>
+                <h3>Reshedule Your Booking: {{ booking.occasion }} - {{ booking.time_slot.date|date:"M d, Y" }} from {{ booking.time_slot.start_time|date:"g A" }} to {{ booking.time_slot.end_time|date:"g A" }}</h3>
                 <p>Select a new time slot for your booking and click "Reschedule Booking" button to change date and/or time of your booking.</p>
             {% else %}
                 <h3>Time Slots for Booking</h3>
                 <p>Choose an available time slot and click "Book Selected Time Slot" to make your booking.</p>
             {% endif %}
+        </div>
+        <div class="col-md-7 col-lg-8">
             <p><i>Time Slots from {{ display_start|date:"F d, Y" }} to {{ display_end|date:"F d, Y" }}</i></p>
         </div>
-        <div class="col-md-4 d-flex justify-content-center justify-content-md-end mb-4 mb-md-0">
-            <!-- Navigation Buttons -->
-            <!-- Previous Week Button -->
+        <div class="col-md-5 col-lg-4 d-flex align-self-end justify-content-center justify-content-md-end align-items-center mb-4">
+            <!-- Days Navigation Buttons -->
+            <!-- Previous 10 Days Button -->
             {% if day_offset > 0 %}
                 <a href="?day_offset={{ day_offset|add:'-1' }}" aria-label="View time slots for previous 10 days" class="btn btn-primary">Previous 10 Days</a>
             {% else %}
                 <!-- Hide the button if it's the current week -->
                 <span></span>
             {% endif %}
+            <!-- Next 10 Days Button -->
             <a href="?day_offset={{ day_offset|add:'1' }}" aria-label="View time slots for next 10 days" class="btn btn-primary ms-2">Next 10 Days</a>
         </div>
     </div>
@@ -69,6 +73,19 @@
                 {% endif %}
             </div>
         {% endfor %}
+        <!-- Bottom navigation buttons -->
+        <div class="mb-3 text-center navigation-buttons bottom">
+            <div class="d-inline-block">
+                {% if day_offset > 0 %}
+                    <a href="?day_offset={{ day_offset|add:'-1' }}" aria-label="View time slots for previous 10 days" class="btn btn-primary">Previous 10 Days</a>
+                {% else %}
+                    <!-- Hide the button if it's the current week -->
+                    <span></span>
+                {% endif %}
+                <!-- Next 10 Days Button -->
+                <a href="?day_offset={{ day_offset|add:'1' }}" aria-label="View time slots for next 10 days" class="btn btn-primary ms-2">Next 10 Days</a>
+            </div>
+        </div>
         <div id="message-container" aria-live="assertive"></div>
         
         {% if booking %}
@@ -77,7 +94,7 @@
                 <button type="submit" class="btn btn-primary submit-button">Reschedule Booking</button>
             </div>
         {% else %}
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-center justify-content-md-end">
             <button type="submit" class="btn btn-primary submit-button">Book Selected Time Slot</button>
         </div>
         {% endif %}
