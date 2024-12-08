@@ -4,5 +4,5 @@
       alert.classList.remove('show');
       alert.classList.add('fade');
       setTimeout(() => alert.remove(), 150);
-    }, 7000);
+    }, 5500);
   });
