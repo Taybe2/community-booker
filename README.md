@@ -180,19 +180,60 @@ This guide provides step-by-step instructions on how to use the Community Booker
 
 ------
 
-### 11. Future Enchancements
+### 11. Deployment
+The Community Booker app is hosted on Heroku. Below are the steps to deploy it using the Heroku Dashboard:
+
+**Prerequisites**
+1. Ensure you have a Heroku account.
+2. Make sure your project code is pushed to a GitHub repository.
+
+**Steps to Deploy via Heroku Dashboard**
+1. Log In to Heroku
+    - Navigate to Heroku and log in to your account.
+2. Create a New Heroku App
+    - Click the New button in the top-right corner of the dashboard.
+    - Select Create new app.
+    - Provide a unique name for your app (e.g., community-booker) and choose your region.
+    - Click Create app.
+3. Connect the App to GitHub
+    - On the app’s dashboard, go to the Deploy tab.
+    - In the Deployment Method section, select GitHub.
+    - In the Config Vars section, click Reveal Config Vars.
+    - Add the required environment variables, such as:
+      ```
+      SECRET_KEY=<your-secret-key>
+      DATABASE_URL=<your-database-url>
+      CLOUDINARY_URL=<your-cloudinary-url>
+
+      ```
+    - If DISABLE_COLLECTSTATIC=1 was previously added, delete it once your static files are correctly configured. This will allow Heroku to run collectstatic during deployment.
+4. Manual Deployment
+    - If you want to deploy manually, scroll to the Manual Deploy section on the Deploy tab.
+    - Choose the branch you want to deploy (e.g., main) and click Deploy Branch.
+    - Wait for Heroku to build and deploy your app.
+5. Access Your Deployed App
+    - Once the deployment is complete, you will see a confirmation message with a link to your app.
+    - Click the link to access your app in the browser.
+
+**Notes**
+  - Make sure DEBUG is set to False for production.
+
 
 ------
 
-### 12. Contributing
+### 12. Future Enchancements
 
 ------
 
-### 13. License
+### 13. Contributing
 
 ------
 
-### 14. Aknowledgements
+### 14. License
+
+------
+
+### 15. Aknowledgements
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
