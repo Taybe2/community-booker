@@ -107,6 +107,19 @@ This guide provides step-by-step instructions on how to use the Community Booker
   - On the Sign Out page, you will be asked if you're sure you want to sign out.
   - Click the "Sign Out" button to complete the logout process.
 
+### 6. Entity Relationship Diagram (ERD)
+The Entity Relationship Diagram (ERD) outlines the database structure for the Community Booker App, showing how data entities relate to one another.
+
+**ERD Overview:**
+- **Users:** Represents authenticated users who can book the community center.
+- **Bookings:** Stores details of each booking made by users.
+- **CommunityCentre:** Holds information about the community center, such as name, address,featured image and operating hours.
+- **TimeSlots:** Represents the available time slots at the community center for booking, including the start and end time for each slot.
+
+Below is the Entity Relationship Diagram (ERD) that shows the structure of the database:
+
+![ERD Diagram](docs/images/erd-diagram.png)
+
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
 `python3 -m http.server`
