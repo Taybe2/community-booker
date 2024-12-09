@@ -8,6 +8,8 @@ A simplified platform to manage and book time slots for community centers.
 ###  1. Project Overview
 The Community Booker App simplifies the process of booking and managing community center resources. Designed with user-friendliness and efficiency in mind, it caters to community centers, event organizers, and local residents.
 
+------
+
 ### 2. Features
 - **User Autentication:** Users can register, log in, reset their password, and manage their bookings, including checking past or upcoming bookings and editing or deleting them.
 - **Booking System:** Allows users to view available time slots and book them instantly.
@@ -16,7 +18,29 @@ The Community Booker App simplifies the process of booking and managing communit
 - **My Bookings Page:** Users can view, edit, or cancel their bookings.
 - **Resposive Design:** Optimized for both desktop and mobile devices.
 
-### 3. Technologies Used
+------
+
+### 3. Agile Methodology
+In this project, I followed Agile practices to ensure incremental progress and iterative feedback. The development was organized into user stories, and tasks were tracked using a project board.
+
+#### User Stories
+Here are some of the key user stories for the project:
+- As a **Site User** I can **register an account** so that **I can make a booking**
+- As a **logged in user** I can **create a booking** so that **I can reserve a spot for my event**
+- As an **admin** I can **create, update, and delete time slots for my community center** so that **users can book them**
+- As a **user** I can **see all available time slots for the community center** so that **I can choose a convenient time to book**
+- As a **user** I can **view a list of my bookings** so that **I can keep track of the times I have reserved for the community center**
+- As a **user** I can **edit an upcoming booking** so that **I can update the occasion or reschedule to a different time slot**
+- As a **user** I can **cancel an upcoming booking** so that **the time slot becomes available for others**
+
+#### Project Board
+All the tasks, user stories, and issues were tracked on the project board. You can check out the project board for the latest updates and progress:
+
+[Link to Project Board](https://github.com/users/Taybe2/projects/5/views/1)
+
+------
+
+### 4. Technologies Used
 - **Back-end:** Django 4.x, Python 3.x
 - **Front End:** HTML5, CSS3, JavaScript
 - **database:** SQLite (for development), PostgreSQL (for production)
@@ -24,7 +48,9 @@ The Community Booker App simplifies the process of booking and managing communit
 - **Media Storage:** Cloudinary
 - **Tools:** Bootstrap, Django Crispy Forms
 
-### 4. Installation Instructions
+------
+
+### 5. Installation Instructions
   1. Clone the repository:
   ```bash
   git clone https://github.com/Taybe2/community-booker.git
@@ -51,7 +77,10 @@ The Community Booker App simplifies the process of booking and managing communit
   ```bash
   python manage.py runserver
   ```
-### 5. Usage Guide
+
+------
+
+### 6. Usage Guide
 This guide provides step-by-step instructions on how to use the Community Booker App effectively.
   
   #### 1. Accessing the Application
@@ -107,11 +136,13 @@ This guide provides step-by-step instructions on how to use the Community Booker
   - On the Sign Out page, you will be asked if you're sure you want to sign out.
   - Click the "Sign Out" button to complete the logout process.
 
-### 6. Entity Relationship Diagram (ERD)
+------
+
+### 7. Entity Relationship Diagram (ERD)
 The Entity Relationship Diagram (ERD) outlines the database structure for the Community Booker App, showing how data entities relate to one another.
 
 **ERD Overview:**
-- **Users:** Represents authenticated users who can book the community center.
+- **Users:** Represents authenticated users who can book the community center. The app utilizes Django's built-in User model, which provides essential functionality for handling user authentication, such as registration, login, and password management.
 - **Bookings:** Stores details of each booking made by users.
 - **CommunityCentre:** Holds information about the community center, such as name, address,featured image and operating hours.
 - **TimeSlots:** Represents the available time slots at the community center for booking, including the start and end time for each slot.
@@ -119,6 +150,8 @@ The Entity Relationship Diagram (ERD) outlines the database structure for the Co
 Below is the Entity Relationship Diagram (ERD) that shows the structure of the database:
 
 ![ERD Diagram](docs/images/erd-diagram.png)
+
+------
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
