@@ -204,7 +204,6 @@ The Community Booker app is hosted on Heroku. Below are the steps to deploy it u
       SECRET_KEY=<your-secret-key>
       DATABASE_URL=<your-database-url>
       CLOUDINARY_URL=<your-cloudinary-url>
-
       ```
     - If DISABLE_COLLECTSTATIC=1 was previously added, delete it once your static files are correctly configured. This will allow Heroku to run collectstatic during deployment.
 4. Manual Deployment
@@ -216,7 +215,7 @@ The Community Booker app is hosted on Heroku. Below are the steps to deploy it u
     - Click the link to access your app in the browser.
 
 **Notes**
-  - Make sure DEBUG is set to False for production.
+  - Make sure DEBUG in settings.py is set to False for production.
 
 
 ------
