@@ -10,17 +10,7 @@ The Community Booker App simplifies the process of booking and managing communit
 
 ------
 
-### 2. Features
-- **User Autentication:** Users can register, log in, reset their password, and manage their bookings, including checking past or upcoming bookings and editing or deleting them.
-- **Booking System:** Allows users to view available time slots and book them instantly.
-- **Admin Panel:** Django's built-in admin panel allows community center admins to manage bookings, update center details, and generate time slots.
-- **Homepage:** Features a hero image with call-to-action button for quick access to Available Time Slots and Community Centre Details.
-- **My Bookings Page:** Users can view, edit, or cancel their bookings.
-- **Resposive Design:** Optimized for both desktop and mobile devices.
-
-------
-
-### 3. Agile Methodology
+### 2. Agile Methodology
 In this project, I followed Agile practices to ensure incremental progress and iterative feedback. The development was organized into user stories, and tasks were tracked using a project board.
 
 #### User Stories
@@ -40,7 +30,51 @@ All the tasks, user stories, and issues were tracked on the project board. You c
 
 ------
 
-### 4. Technologies Used
+### 3. Features
+- **User Autentication:** Users can register, log in, reset their password, and manage their bookings, including checking past or upcoming bookings and editing or deleting them.
+- **Booking System:** Allows users to view available time slots and book them instantly.
+- **Admin Panel:** Django's built-in admin panel allows community center admins to manage bookings, update center details, and generate time slots.
+- **Homepage:** Features a hero image with call-to-action button for quick access to Available Time Slots and Community Centre Details.
+- **My Bookings Page:** Users can view, edit, or cancel their bookings.
+- **Resposive Design:** Optimized for both desktop and mobile devices.
+
+------
+### 4. Wireframes
+The wireframes below depict the initial design concepts of the Community Booker App, showcasing the layout and flow of key pages such as the homepage, booking page, and user management pages.
+
+#### Key Screens
+- **Homepage:** Features a hero image with call-to-action buttons for quick access to available time slots and community center details.
+- **Available Time Slots Page:** Displays the available time slots for booking, organized from tomorrow onward.
+- **My Bookings Page:** Allows users to view their bookings, with options to edit or cancel.
+- **Confirm Booking Page:** Allows users to provide booking details, such as occasion type and notes, before finalizing their booking.
+
+#### File location
+The wireframes for all pages are consolidated in a single PDF file for easy reference. You can find the file in the *docs/wireframes/* directory of this repository. The file is named *wireframes.pdf*.
+
+#### Tools Used
+These wireframes were created using Balsamiq, a user-friendly tool for creating low-fidelity wireframes that help visualize and plan application designs.
+
+#### Note on Iterations
+The wireframes served as the foundation for the app's UI design. Some elements have been refined during implementation to improve user experience.
+
+------
+
+### 5. Entity Relationship Diagram (ERD)
+The Entity Relationship Diagram (ERD) outlines the database structure for the Community Booker App, showing how data entities relate to one another.
+
+**ERD Overview:**
+- **Users:** Represents authenticated users who can book the community center. The app utilizes Django's built-in User model, which provides essential functionality for handling user authentication, such as registration, login, and password management.
+- **Bookings:** Stores details of each booking made by users.
+- **CommunityCentre:** Holds information about the community center, such as name, address,featured image and operating hours.
+- **TimeSlots:** Represents the available time slots at the community center for booking, including the start and end time for each slot.
+
+Below is the Entity Relationship Diagram (ERD) that shows the structure of the database:
+
+![ERD Diagram](docs/images/erd-diagram.png)
+
+------
+
+### 6. Technologies Used
 - **Back-end:** Django 4.x, Python 3.x
 - **Front End:** HTML5, CSS3, JavaScript
 - **database:** SQLite (for development), PostgreSQL (for production)
@@ -50,7 +84,7 @@ All the tasks, user stories, and issues were tracked on the project board. You c
 
 ------
 
-### 5. Installation Instructions
+### 7. Installation Instructions
   1. Clone the repository:
   ```bash
   git clone https://github.com/Taybe2/community-booker.git
@@ -80,7 +114,7 @@ All the tasks, user stories, and issues were tracked on the project board. You c
 
 ------
 
-### 6. Usage Guide
+### 8. Usage Guide
 This guide provides step-by-step instructions on how to use the Community Booker App effectively.
   
   #### 1. Accessing the Application
@@ -138,20 +172,27 @@ This guide provides step-by-step instructions on how to use the Community Booker
 
 ------
 
-### 7. Entity Relationship Diagram (ERD)
-The Entity Relationship Diagram (ERD) outlines the database structure for the Community Booker App, showing how data entities relate to one another.
-
-**ERD Overview:**
-- **Users:** Represents authenticated users who can book the community center. The app utilizes Django's built-in User model, which provides essential functionality for handling user authentication, such as registration, login, and password management.
-- **Bookings:** Stores details of each booking made by users.
-- **CommunityCentre:** Holds information about the community center, such as name, address,featured image and operating hours.
-- **TimeSlots:** Represents the available time slots at the community center for booking, including the start and end time for each slot.
-
-Below is the Entity Relationship Diagram (ERD) that shows the structure of the database:
-
-![ERD Diagram](docs/images/erd-diagram.png)
+### 9. Screenshots
 
 ------
+
+### 10. Testing
+
+------
+
+### 11. Future Enchancements
+
+------
+
+### 12. Contributing
+
+------
+
+### 13. License
+
+------
+
+### 14. Aknowledgements
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
