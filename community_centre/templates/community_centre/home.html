@@ -24,10 +24,10 @@
             <div class="row align-items-center">
                 <div class="col-12 col-lg-6">
                     {% if "placeholder" in post.featured_image.url %}
-                    <img class="card-img-top" src="{% static 'images/default.png' %}"
+                    <img class="img-fluid rounded" src="{% static 'images/default.png' %}"
                         alt="placeholder image">
                     {% else %}
-                    <img class="card-img-top" src=" {{ community_centre.featured_image.url }}"
+                    <img class="img-fluid rounded" src=" {{ community_centre.featured_image.url }}"
                         alt="{{ community_centre.name }}">
                     {% endif %}
                 </div>
