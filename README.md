@@ -5,10 +5,10 @@ A simplified platform to manage and book time slots for community centers.
 #### Table of Contents
 
 
-1. ### Project Overview
+###  1. Project Overview
 The Community Booker App simplifies the process of booking and managing community center resources. Designed with user-friendliness and efficiency in mind, it caters to community centers, event organizers, and local residents.
 
-2. ### Features
+### 2. Features
 - **User Autentication:** Users can register, log in, reset their password, and manage their bookings, including checking past or upcoming bookings and editing or deleting them.
 - **Booking System:** Allows users to view available time slots and book them instantly.
 - **Admin Panel:** Django's built-in admin panel allows community center admins to manage bookings, update center details, and generate time slots.
@@ -16,7 +16,7 @@ The Community Booker App simplifies the process of booking and managing communit
 - **My Bookings Page:** Users can view, edit, or cancel their bookings.
 - **Resposive Design:** Optimized for both desktop and mobile devices.
 
-3. ### Technologies Used
+### 3. Technologies Used
 - **Back-end:** Django 4.x, Python 3.x
 - **Front End:** HTML5, CSS3, JavaScript
 - **database:** SQLite (for development), PostgreSQL (for production)
@@ -24,7 +24,7 @@ The Community Booker App simplifies the process of booking and managing communit
 - **Media Storage:** Cloudinary
 - **Tools:** Bootstrap, Django Crispy Forms
 
-4. ### Installation Instructions
+### 4. Installation Instructions
   1. Clone the repository:
   ```bash
   git clone https://github.com/Taybe2/community-booker.git
@@ -51,32 +51,32 @@ The Community Booker App simplifies the process of booking and managing communit
   ```bash
   python manage.py runserver
   ```
-5. ### Usage Guide
+### 5. Usage Guide
 This guide provides step-by-step instructions on how to use the Community Booker App effectively.
   
-  1. #### Accessing the Application
+  #### 1. Accessing the Application
   - Open your browser and navigate to the app’s URL: <a href="https://community-booker-app-9f0552b871a8.herokuapp.com/" target="_blank">Community Booker App</a>
   - You’ll be greeted with the homepage featuring a hero image and call-to-action button for quick navigation.
   - You will also see the Community Centre's details, including its address, opening hours, and operating days.
   
-  2. #### Registering an Account
+  #### 2. Registering an Account
   - Click on the Sign Up link in the navigation menu.
   - Fill out the registration form with your details (e.g., username, email, password).
   - Submit the form to create your account.
   - After registering, you can log in using your credentials.
 
-  3. #### Logging In
+  #### 3. Logging In
   - Click on the Log In link in the navigation menu.
   - Enter your username and password.
   - Click Sign In to access the My Bookings page, where you can view your bookings or make a new one.
 
-  4. #### Viewing Available Time Slots
+  #### 4. Viewing Available Time Slots
   - Click on the Available Time Slots link in the navigation menu.
   - View the available time slots, starting from tomorrow, organized by date and time.
   - Use the Next 10 Days or Previous 10 Days buttons to navigate between dates.
   - To book a slot, you must first log in or register.
 
-  5. #### Making a Booking
+  #### 5. Making a Booking
   - Go to the Available Time Slots page and browse the available slots.
   - Select an available time slot by clicking on it.
   - Click the Book Selected Time Slot button to go to the booking page.
@@ -84,14 +84,14 @@ This guide provides step-by-step instructions on how to use the Community Booker
   - Choose whether you want your booking to be Public (viewable by others) or Private (not viewable by others).
   - After filling in all the details, click Confirm Booking to complete the booking process.
 
-  6. #### Managing Your Booking
+  #### 6. Managing Your Booking
   - Navigate to the "My Bookings" page from the navigation menu.
   - View all your bookings categorized as Upcoming or Past.
   - For **Upcoming Bookings**:
     - Edit the booking details using the Edit Booking button.
     - Cancel a booking using the Cancel Booking button.
   
-  7. #### Editing an Upcoming Booking
+  #### 7. Editing an Upcoming Booking
   - Navigate to the My Bookings page from the navigation menu.
   - Find the booking you want to edit.
   - Click the Edit button next to the booking.
@@ -100,7 +100,7 @@ This guide provides step-by-step instructions on how to use the Community Booker
   - You will be navigated to the Choose a Different Time Slot (Reschedule) page, where you can select a new time slot for your booking.
   - Once you've made the changes, click Save Changes to update your booking.
 
-  9. #### Logging Out
+####  8. Logging Out
   - Click on the "Logged in as [username]" text in the navigation menu
   - A dropdown menu will appear with the option "Logout".
   - Click "Logout" to be redirected to the Sign Out page.
