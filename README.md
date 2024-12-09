@@ -103,7 +103,9 @@ This guide provides step-by-step instructions on how to use the Community Booker
   9. #### Logging Out
   - Click on the "Logged in as [username]" text in the navigation menu
   - A dropdown menu will appear with the option "Logout".
-  - Click "Logout" to sign out of your account.
+  - Click "Logout" to be redirected to the Sign Out page.
+  - On the Sign Out page, you will be asked if you're sure you want to sign out.
+  - Click the "Sign Out" button to complete the logout process.
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
