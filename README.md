@@ -1,13 +1,56 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome Taybe Muharem,
+## Community Booker App
+A simplified platform to manage and book time slots for community centers.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+#### Table of Contents
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
 
-## Gitpod Reminders
+1. ### Project Overview
+The Community Booker App simplifies the process of booking and managing community center resources. Designed with user-friendliness and efficiency in mind, it caters to community centers, event organizers, and local residents.
 
+2. ### Features
+- **User Autentication:** Users can register, log in, reset their password, and manage their bookings, including checking past or upcoming bookings and editing or deleting them.
+- **Booking System:** Allows users to view available time slots and book them instantly.
+- **Admin Panel:** Django's built-in admin panel allows community center admins to manage bookings, update center details, and generate time slots.
+- **Homepage:** Features a hero image with call-to-action button for quick access to Available Time Slots and Community Centre Details.
+- **My Bookings Page:** Users can view, edit, or cancel their bookings.
+- **Resposive Design:** Optimized for both desktop and mobile devices.
+
+3. ### Technologies Used
+- **Back-end:** Django 4.x, Python 3.x
+- **Front End:** HTML5, CSS3, JavaScript
+- **database:** SQLite (for development), PostgreSQL (for production)
+- **Hosting:** Heroku
+- **Media Storage:** Cloudinary
+- **Tools:** Bootstrap, Django Crispy Forms
+
+4. ### Installation Instructions
+  1. Clone the repository:
+  ```bash
+    git clone https://github.com/Taybe2/community-booker.git
+    cd community-booker
+  ```
+  2. Create a virtual environment and activate it:
+  ```bash
+    python -m venv env
+    source env/bin/activate  # On Windows: env\Scripts\activate
+  ```
+  3. Install dependencies:
+  ```bash
+    pip install -r requirements.txt
+  ```
+  4. Apply migrations:
+  ```bash
+    python manage.py migrate
+  ```
+  5. Create a superuser for admin access:
+  ```bash
+    python manage.py createsuperuser
+  ```
+  6. Run the development server:
+  ```bash
+    python manage.py runserver
+  ```
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
 `python3 -m http.server`
