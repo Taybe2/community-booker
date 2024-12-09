@@ -51,6 +51,60 @@ The Community Booker App simplifies the process of booking and managing communit
   ```bash
   python manage.py runserver
   ```
+5. ### Usage Guide
+This guide provides step-by-step instructions on how to use the Community Booker App effectively.
+  
+  1. #### Accessing the Application
+  - Open your browser and navigate to the app’s URL: <a href="https://community-booker-app-9f0552b871a8.herokuapp.com/" target="_blank">Community Booker App</a>
+  - You’ll be greeted with the homepage featuring a hero image and call-to-action button for quick navigation.
+  - You will also see the Community Centre's details, including its address, opening hours, and operating days.
+  
+  2. #### Registering an Account
+  - Click on the Sign Up link in the navigation menu.
+  - Fill out the registration form with your details (e.g., username, email, password).
+  - Submit the form to create your account.
+  - After registering, you can log in using your credentials.
+
+  3. #### Logging In
+  - Click on the Log In link in the navigation menu.
+  - Enter your username and password.
+  - Click Sign In to access the My Bookings page, where you can view your bookings or make a new one.
+
+  4. #### Viewing Available Time Slots
+  - Click on the Available Time Slots link in the navigation menu.
+  - View the available time slots, starting from tomorrow, organized by date and time.
+  - Use the Next 10 Days or Previous 10 Days buttons to navigate between dates.
+  - To book a slot, you must first log in or register.
+
+  5. #### Making a Booking
+  - Go to the Available Time Slots page and browse the available slots.
+  - Select an available time slot by clicking on it.
+  - Click the Book Selected Time Slot button to go to the booking page.
+  - Fill in the booking details, including: Occassion, Occasion Type(Private/Public) and Notes(optional)
+  - Choose whether you want your booking to be Public (viewable by others) or Private (not viewable by others).
+  - After filling in all the details, click Confirm Booking to complete the booking process.
+
+  6. #### Managing Your Booking
+  - Navigate to the "My Bookings" page from the navigation menu.
+  - View all your bookings categorized as Upcoming or Past.
+  - For **Upcoming Bookings**:
+    - Edit the booking details using the Edit Booking button.
+    - Cancel a booking using the Cancel Booking button.
+  
+  7. #### Editing an Upcoming Booking
+  - Navigate to the My Bookings page from the navigation menu.
+  - Find the booking you want to edit.
+  - Click the Edit button next to the booking.
+  - Modify the details of your booking, such as the occasion name, type, or notes.
+  - To change the time and/or date of your booking, click the Change Time Slot link.
+  - You will be navigated to the Choose a Different Time Slot (Reschedule) page, where you can select a new time slot for your booking.
+  - Once you've made the changes, click Save Changes to update your booking.
+
+  9. #### Logging Out
+  - Click on the "Logged in as [username]" text in the navigation menu
+  - A dropdown menu will appear with the option "Logout".
+  - Click "Logout" to sign out of your account.
+
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
 `python3 -m http.server`
