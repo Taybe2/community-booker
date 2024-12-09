@@ -27,29 +27,29 @@ The Community Booker App simplifies the process of booking and managing communit
 4. ### Installation Instructions
   1. Clone the repository:
   ```bash
-    git clone https://github.com/Taybe2/community-booker.git
-    cd community-booker
+  git clone https://github.com/Taybe2/community-booker.git
+  cd community-booker
   ```
   2. Create a virtual environment and activate it:
   ```bash
-    python -m venv env
-    source env/bin/activate  # On Windows: env\Scripts\activate
+  python -m venv env
+  source env/bin/activate  # On Windows: env\Scripts\activate
   ```
   3. Install dependencies:
   ```bash
-    pip install -r requirements.txt
+  pip install -r requirements.txt
   ```
   4. Apply migrations:
   ```bash
-    python manage.py migrate
+  python manage.py migrate
   ```
   5. Create a superuser for admin access:
   ```bash
-    python manage.py createsuperuser
+  python manage.py createsuperuser
   ```
   6. Run the development server:
   ```bash
-    python manage.py runserver
+  python manage.py runserver
   ```
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
