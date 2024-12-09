@@ -29,9 +29,9 @@ Here are some of the key user stories for the project:
 - As a **logged in user** I can **create a booking** so that **I can reserve a spot for my event**
 - As an **admin** I can **create, update, and delete time slots for my community center** so that **users can book them**
 - As a **user** I can **see all available time slots for the community center** so that **I can choose a convenient time to book**
-- As a **user** I can **view a list of my bookings** so that **I can keep track of the times I have reserved for the community center**
-- As a **user** I can **edit an upcoming booking** so that **I can update the occasion or reschedule to a different time slot**
-- As a **user** I can **cancel an upcoming booking** so that **the time slot becomes available for others**
+- As a **logged in user** I can **view a list of my bookings** so that **I can keep track of the times I have reserved for the community center**
+- As a **logged in user** I can **edit an upcoming booking** so that **I can update the occasion or reschedule to a different time slot**
+- As a **logged in user** I can **cancel an upcoming booking** so that **the time slot becomes available for others**
 
 #### Project Board
 All the tasks, user stories, and issues were tracked on the project board. You can check out the project board for the latest updates and progress:
