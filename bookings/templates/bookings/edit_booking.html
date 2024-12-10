@@ -20,7 +20,7 @@
     <form method="POST">
       {% csrf_token %}
       {{ form | crispy }}
-      <a href="{% url 'my-bookings' %}" class="btn btn-secondary" type="submit">Cancel</a>
+      <a href="{% url 'my-bookings' %}" class="btn btn-secondary">Cancel</a>
       <button class="btn btn-primary" type="submit">Save Changes</button>
     </form>
   </div>

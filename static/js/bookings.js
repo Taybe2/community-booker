@@ -25,7 +25,7 @@ for (let button of deleteButtons) {
             let bookingDetails = button.getAttribute("data-booking-details")
 
             // Update the modal title and confirm button href
-            modalTitle.textContent = `Cancel Booking: ${bookingName}`
+            modalTitle.textContent += `${bookingName}`
             modalContent.innerHTML = `Are you sure you want to cancel booking <strong>${bookingName}</strong> on <strong>${bookingDetails}</strong>? This action cannot be undone.`;
             deleteConfirm.href = `/booking/${bookingSlug}/cancel`;
             deleteModal.show();

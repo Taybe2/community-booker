@@ -93,7 +93,7 @@ body {
 .btn-check:checked + .btn-timeslot {
     background: var(--hover-color);
     color: var(--secondary-color);
-    border-color: var(--hover-color);
+    border-color: transparent;
 }
 
 /* Dynamic error message */
