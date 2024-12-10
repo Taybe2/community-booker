@@ -43,10 +43,23 @@ All the tasks, user stories, and issues were tracked on the project board. You c
 The wireframes below depict the initial design concepts of the Community Booker App, showcasing the layout and flow of key pages such as the homepage, booking page, and user management pages.
 
 #### Key Screens
+
 - **Homepage:** Features a hero image with call-to-action buttons for quick access to available time slots and community center details.
+
+![Homepage Wireframe](docs/wireframes/pngs/homepage.png)
+
 - **Available Time Slots Page:** Displays the available time slots for booking, organized from tomorrow onward.
+
+![Available Time Slots Wireframe](docs/wireframes/pngs/available_times.png)
+
 - **My Bookings Page:** Allows users to view their bookings, with options to edit or cancel.
+
+![My Bookings Wireframe](docs/wireframes/pngs/my_bookings.png)
+
 - **Confirm Booking Page:** Allows users to provide booking details, such as occasion type and notes, before finalizing their booking.
+
+
+![Confirm Booking Wireframe](docs/wireframes/pngs/confirm_booking.png.png)
 
 #### File location
 The wireframes for all pages are consolidated in a single PDF file for easy reference. You can find the file in the *docs/wireframes/* directory of this repository. The file is named *wireframes.pdf*.
@@ -221,6 +234,17 @@ The Community Booker app is hosted on Heroku. Below are the steps to deploy it u
 ------
 
 ### 12. Future Enchancements
+#### 1. Multiple Community Centers Support
+  Allow the app to support multiple community centers, where each center can have its own settings, time slots, and bookings. This will allow the platform to be used by various community centers, making it more scalable.
+
+#### 2. Recurring Bookings
+  Add support for recurring bookings, where users can book a time slot on a weekly, monthly, or custom repeating schedule.
+
+#### 3. Payment Integration
+  Add support for online payments for bookings (if applicable), allowing users to pay for their booking directly through the app.
+
+#### 4. Admin Booking Approval
+  Introduce a booking approval system where admins must review and approve or reject bookings before they are finalized. This ensures better control over the scheduling process and prevents conflicts or unauthorized bookings.
 
 ------
 
