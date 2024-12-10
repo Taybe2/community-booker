@@ -15,6 +15,7 @@ DAYS_OF_WEEK = [
     (7, 'Sunday'),
 ]
 
+
 class CommunityCentre(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, blank=True)
