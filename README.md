@@ -40,7 +40,7 @@ All the tasks, user stories, and issues were tracked on the project board. You c
 
 ------
 ### 4. Wireframes
-The wireframes below depict the initial design concepts of the Community Booker App, showcasing the layout and flow of key pages such as the homepage, booking page, and user management pages.
+The wireframes below illustrate the initial design concepts for the Community Booker App, highlighting the layout and navigation flow of key pages such as the homepage, booking page, and user booking management pages.
 
 #### Key Screens
 
@@ -59,10 +59,7 @@ The wireframes below depict the initial design concepts of the Community Booker 
 - **Confirm Booking Page:** Allows users to provide booking details, such as occasion type and notes, before finalizing their booking.
 
 
-![Confirm Booking Wireframe](docs/wireframes/pngs/confirm_booking.png.png)
-
-#### File location
-The wireframes for all pages are consolidated in a single PDF file for easy reference. You can find the file in the *docs/wireframes/* directory of this repository. The file is named *wireframes.pdf*.
+![Confirm Booking Wireframe](docs/wireframes/pngs/confirm_booking.png)
 
 #### Tools Used
 These wireframes were created using Balsamiq, a user-friendly tool for creating low-fidelity wireframes that help visualize and plan application designs.
