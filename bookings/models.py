@@ -5,9 +5,12 @@ from community_centre.models import CommunityCentre
 
 # Create your models here.
 
+
 class TimeSlot(models.Model):
     community_centre = models.ForeignKey(
-        'community_centre.CommunityCentre', on_delete=models.CASCADE, related_name='time_slots'
+        'community_centre.CommunityCentre',
+        on_delete=models.CASCADE,
+        related_name='time_slots'
     )
     date = models.DateField()
     start_time = models.TimeField()
@@ -27,10 +30,20 @@ class Booking(models.Model):
         ('private', 'Private'),
         ('public', 'Public'),
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings')
-    time_slot = models.OneToOneField('TimeSlot', on_delete=models.CASCADE, related_name='booking')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='bookings'
+        )
+    time_slot = models.OneToOneField(
+        'TimeSlot',
+        on_delete=models.CASCADE,
+        related_name='booking'
+        )
     community_centre = models.ForeignKey(
-        'community_centre.CommunityCentre', on_delete=models.CASCADE, related_name='bookings'
+        'community_centre.CommunityCentre',
+        on_delete=models.CASCADE,
+        related_name='bookings'
     )
     occasion = models.CharField(max_length=100, default='')
     slug = models.SlugField(unique=True, blank=True, null=True, max_length=150)
@@ -44,9 +57,16 @@ class Booking(models.Model):
 
     def save(self, *args, **kwargs):
         # Example: "user123-2024-12-01-14-00"
-        unique_identifier = f"{self.user.username}-{self.occasion}-{self.time_slot.date}-{self.time_slot.start_time}"
+        unique_identifier = (
+            f"{self.user.username}-{self.occasion}-"
+            f"{self.time_slot.date}-{self.time_slot.start_time}"
+        )
         self.slug = slugify(unique_identifier)
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Booking by {self.user.username} for {self.time_slot} at {self.community_centre.name}"
+        formatted_string = (
+            f"Booking by {self.user.username} for {self.time_slot} "
+            f"at {self.community_centre.name}"
+        )
+        return formatted_string

@@ -62,4 +62,18 @@ Validation checks for HTML, CSS and Python
   - **Outcome:** No errors. Warning regarding same color for `background-color` and `border-color` in the `.btn-check:checked + .btn-timeslot` selector.
 - **Actions Taken:** Replaced the `border-color` with `transparent` to avoid having the same color for both properties.
 
-### Python 
+### PEP8 Compliance Check
+
+**Objective:**  
+To ensure that the Python code adheres to the PEP8 style guide, which promotes readability and consistency in Python code.
+
+**Method:**  
+I used a tool to check the Python code against PEP8 standards. The tool identified any deviations from the guidelines, such as incorrect indentation, line length, whitespace usage, and naming conventions.
+
+**Actions Taken:**  
+- Ran a PEP8 linter (such as `pycodestyle` or `flake8`) on the Python code.
+- Corrected issues such as improper indentation, line length exceeding 79 characters, and any other identified style violations.
+- Ensured all function and variable names followed PEP8 naming conventions.
+
+**Result:**  
+After fixing the issues, the Python code now conforms to PEP8 standards, ensuring better readability and maintainability.

@@ -14,13 +14,16 @@ from bookings.utils import is_time_slot_valid_and_available
 # get the only Community Centre currently
 community_centre = CommunityCentre.objects.first()
 
+
 def time_slot_view(request, booking_slug=None):
-    """Display time slots for a limited range of days, starting from tomorrow."""
+    """Display time slots for a limited range of days,
+    starting from tomorrow.
+    """
     today = timezone.now().date()  # Get today's date
     start_date = today + timedelta(days=1)  # Start from tomorrow
 
     # Get the day offset from the URL parameters (default is 0)
-    day_offset = int(request.GET.get('day_offset', 0))  # 0 for the first range, +N for subsequent ranges
+    day_offset = int(request.GET.get('day_offset', 0))
 
     # Set the number of days to display per range
     days_per_page = 10
@@ -28,17 +31,21 @@ def time_slot_view(request, booking_slug=None):
     display_end = display_start + timedelta(days=days_per_page - 1)
 
     # Fetch time slots in the current range
-    time_slots = TimeSlot.objects.filter(date__range=[display_start, display_end]).order_by('date', 'start_time')
+    time_slots = TimeSlot.objects.filter(
+        date__range=[display_start, display_end]).order_by(
+            'date', 'start_time')
 
     # Group time slots by day
     slots_by_day = {}
     current_day = display_start
+
     while current_day <= display_end:
         slots_for_day = time_slots.filter(date=current_day)
         slots_with_bookings = []
 
         for slot in slots_for_day:
-            has_booking = hasattr(slot, 'booking')  # Check if the slot has a related booking
+            # Check if the slot has a related booking
+            has_booking = hasattr(slot, 'booking')
             slots_with_bookings.append({
                 'slot': slot,
                 'has_booking': has_booking
@@ -55,7 +62,11 @@ def time_slot_view(request, booking_slug=None):
         if booking_slug:
             # Edit existing booking
             booking = get_object_or_404(Booking, slug=booking_slug)
-            return redirect('edit-booking', slug=booking.slug, slot_id=selected_slot_id)
+            return redirect(
+                'edit-booking',
+                slug=booking.slug,
+                slot_id=selected_slot_id
+            )
 
         if selected_slot_id:
             # Save the booking or perform other actions
@@ -65,9 +76,11 @@ def time_slot_view(request, booking_slug=None):
     if booking_slug:
         booking = get_object_or_404(Booking, slug=booking_slug)
         if request.user != booking.user:
-            messages.error(request, "You are not authorized to edit this booking.")
+            messages.error(
+                request,
+                "You are not authorized to edit this booking.")
             return redirect('home')  # Redirect to a safe page
-    
+
     context = {
         'slots_by_day': slots_by_day,
         'display_start': display_start,
@@ -81,7 +94,6 @@ def time_slot_view(request, booking_slug=None):
     return render(request, 'bookings/timeslot_list.html', context)
 
 
-
 @login_required
 def create_booking_view(request, time_slot_id):
     """Handle booking creation for a selected time slot."""
@@ -92,12 +104,15 @@ def create_booking_view(request, time_slot_id):
     if not is_valid:
         messages.error(request, error_message)
         return redirect('time_slots')  # Redirect back to time slots
-    
+
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
             booking = form.save(commit=False)
-            booking.user = request.user  # Associate the booking with the logged-in user
+
+            # Associate the booking with the logged-in user
+            booking.user = request.user
+
             booking.time_slot = time_slot
             booking.community_centre = community_centre
             booking.save()
@@ -112,6 +127,7 @@ def create_booking_view(request, time_slot_id):
         'time_slot': time_slot,
     })
 
+
 @login_required
 def my_bookings_view(request):
     """Display the user's bookings and allow editing or cancellation."""
@@ -119,7 +135,8 @@ def my_bookings_view(request):
     user = request.user
 
     # Fetch the bookings made by the logged-in user
-    user_bookings = Booking.objects.filter(user=user).order_by('time_slot')  # You can order by booking creation date
+    user_bookings = Booking.objects.filter(
+        user=user).order_by('time_slot')
 
     # Get current datetime
     current_datetime = timezone.now()
@@ -130,8 +147,12 @@ def my_bookings_view(request):
 
     for booking in user_bookings:
         # Combine date and time to create naive datetime
-        booking_start_naive = datetime.combine(booking.time_slot.date, booking.time_slot.start_time)
-        booking_end_naive = datetime.combine(booking.time_slot.date, booking.time_slot.end_time)
+        booking_start_naive = datetime.combine(
+            booking.time_slot.date,
+            booking.time_slot.start_time)
+        booking_end_naive = datetime.combine(
+            booking.time_slot.date,
+            booking.time_slot.end_time)
 
         # Make the combined datetimes timezone-aware
         booking_start = timezone.make_aware(booking_start_naive)
@@ -143,21 +164,25 @@ def my_bookings_view(request):
         else:
             upcoming_bookings.append(booking)
 
-    past_paginator = Paginator(past_bookings, 7)  # Show 7 past bookings per page
-    upcoming_paginator = Paginator(upcoming_bookings, 7)  # Show 7 upcoming bookings per page
+    # Show 7 past bookings per page
+    past_paginator = Paginator(past_bookings, 7)
 
-    past_page_number = request.GET.get('past_page', 1)  # Get the page number for past bookings
-    upcoming_page_number = request.GET.get('upcoming_page', 1)  # Get the page number for upcoming bookings
+    # Show 7 upcoming bookings per page
+    upcoming_paginator = Paginator(upcoming_bookings, 7)
+
+    past_page_number = request.GET.get('past_page', 1)
+    upcoming_page_number = request.GET.get('upcoming_page', 1)
 
     past_page_obj = past_paginator.get_page(past_page_number)
     upcoming_page_obj = upcoming_paginator.get_page(upcoming_page_number)
-    
+
     context = {
         'past_bookings': past_page_obj,
         'upcoming_bookings': upcoming_page_obj,
     }
 
     return render(request, 'bookings/my_bookings.html', context)
+
 
 @login_required
 def cancel_booking(request, slug):
@@ -181,6 +206,7 @@ def cancel_booking(request, slug):
         messages.error(request, "You are not authorized to edit this booking.")
         return redirect('home')  # Redirect to a safe page
 
+
 @login_required
 def edit_booking_view(request, slug, slot_id=None):
     """Edit an existing booking."""
@@ -190,12 +216,15 @@ def edit_booking_view(request, slug, slot_id=None):
     if (request.user == booking.user):
 
         # Retrieve the new time slot if provided
-        new_time_slot = get_object_or_404(TimeSlot, id=slot_id) if slot_id else None
-        
+        new_time_slot = get_object_or_404(
+            TimeSlot, id=slot_id) if slot_id else None
+
         if new_time_slot:
 
             # Validate the new time slot
-            is_valid, error_message = is_time_slot_valid_and_available(new_time_slot, exclude_booking_id=booking.id)
+            is_valid, error_message = is_time_slot_valid_and_available(
+                new_time_slot, exclude_booking_id=booking.id)
+
             if not is_valid:
                 messages.error(request, error_message)
                 return redirect('time_slots', booking_slug=booking.slug)
@@ -221,6 +250,7 @@ def edit_booking_view(request, slug, slot_id=None):
     else:
         messages.error(request, "You are not authorized to edit this booking.")
         return redirect('home')  # Redirect to a safe page
+
 
 @login_required
 def change_time_slot_view(request, booking_slug):
