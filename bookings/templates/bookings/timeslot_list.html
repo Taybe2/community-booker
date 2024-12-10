@@ -51,8 +51,8 @@
                 {% if slots %}
                     <div class="btn-group-toggle w-100" role="group">
                         {% for slot_info in slots %}
-                            <input type="radio" class="btn-check" role="radio" name="time_slot" id="{{ slot_info.slot.id }}" value="{{ slot_info.slot.id }}" 
-                                   {% if slot_info.has_booking %}disabled{% endif %}>
+                            <input type="radio" class="btn-check" name="time_slot" id="{{ slot_info.slot.id }}" value="{{ slot_info.slot.id }}" 
+                                   {% if slot_info.has_booking %} disabled{% endif %}>
                             <label class="btn {% if slot_info.has_booking %} disabled {% else %}btn-outline {% endif %}btn-timeslot" 
                                    for="{{ slot_info.slot.id }}" tabindex="0">
                                 {{ slot_info.slot.start_time|date:"g A" }} - {{ slot_info.slot.end_time|date:"g A" }}

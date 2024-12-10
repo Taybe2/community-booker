@@ -187,7 +187,7 @@ This guide provides step-by-step instructions on how to use the Community Booker
 ------
 
 ### 10. Testing
-
+For detailed information about testing, refer to the [TESTING.md](./TESTING.md) file.
 ------
 
 ### 11. Deployment
