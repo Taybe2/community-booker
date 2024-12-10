@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
 # Days of the week as integers
 DAYS_OF_WEEK = [
     (1, 'Monday'),
@@ -16,7 +15,11 @@ DAYS_OF_WEEK = [
 ]
 
 
+# Create your models here.
 class CommunityCentre(models.Model):
+    """
+    Represents a community centre, storing its details and operating schedule.
+    """
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, blank=True)
     featured_image = CloudinaryField('image', default='placeholder')

@@ -7,6 +7,9 @@ from community_centre.models import CommunityCentre
 
 
 class TimeSlot(models.Model):
+    """
+    Stores a single time slot entry related to :model:`community_centre.CommunityCentre`
+    """
     community_centre = models.ForeignKey(
         'community_centre.CommunityCentre',
         on_delete=models.CASCADE,
@@ -26,6 +29,10 @@ class TimeSlot(models.Model):
 
 
 class Booking(models.Model):
+    """
+    Represents a single booking entry related to :model:`auth.User`,
+    :model:`bookings.TimeSlot` and :model:`community_centre.CommunityCentre`
+    """
     OCCASION_TYPE_CHOICES = [
         ('private', 'Private'),
         ('public', 'Public'),

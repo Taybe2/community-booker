@@ -11,15 +11,14 @@ Validation checks for HTML, CSS and Python
 
 ### HTML Validation
 - **Tool Used:** W3C Validator.
+
 - **Results:**
   
   - **Homepage:** Passed with no errors or warnings.
   
   - **Available Time Slots Page:**
-    - **Issue Identified:** 
-      The input elements with type="radio" had an unnecessary role="radio", which caused accessibility warnings.
-    - **Resolution:**  
-      Removed the role="radio" attribute from the input elements, which resolved all accessibility issues for this page.
+    - **Issue Identified:** The input elements with type="radio" had an unnecessary role="radio", which caused accessibility warnings.
+    - **Resolution:** Removed the role="radio" attribute from the input elements, which resolved all accessibility issues for this page.
   
   - **Confirm Booking Page:**
     - **No errors or warnings reported.**
@@ -37,10 +36,8 @@ Validation checks for HTML, CSS and Python
       4. To resolve the warning, I added a heading with text content. Additionally, if dynamic content needs to be added to the heading, I used JavaScript to append the remainder of the content to the heading.
   
   - **Edit Booking Page:**
-    - **Issue Identified:** 
-      Error: Bad value submit for attribute type on element a: Subtype missing
-    - **Resolution:**  
-      To resolve the error, I removed the ``type="submit"`` attribute from the ``<a>`` tag, as anchor elements do not support the type attribute. If the element was intended to behave like a submit button, it should be replaced with a ``<button>`` tag instead.
+    - **Issue Identified:** Error: Bad value submit for attribute type on element a: Subtype missing
+    - **Resolution:** To resolve the error, I removed the ``type="submit"`` attribute from the ``<a>`` tag, as anchor elements do not support the type attribute. If the element was intended to behave like a submit button, it should be replaced with a ``<button>`` tag instead.
 
   - **Log Out Page:**
     - **No errors or warnings reported.**
@@ -57,12 +54,11 @@ Validation checks for HTML, CSS and Python
 
 ### CSS Validation
 - **Tool Used:** W3C CSS Validator (https://jigsaw.w3.org/css-validator/).
+
 - **Results:**
   - **Stylesheet:** styles.css
   - **Outcome:** No errors. Warning regarding same color for `background-color` and `border-color` in the `.btn-check:checked + .btn-timeslot` selector.
 - **Actions Taken:** Replaced the `border-color` with `transparent` to avoid having the same color for both properties.
-
-### PEP8 Compliance Check
 
 ### PEP8 Compliance Check
 
