@@ -16,8 +16,46 @@ community_centre = CommunityCentre.objects.first()
 
 
 def time_slot_view(request, booking_slug=None):
-    """Display time slots for a limited range of days,
-    starting from tomorrow.
+    """
+    Displays time slots for a limited range of days, starting from tomorrow.
+
+    This view displays a list of available time slots for booking,
+    grouped by day, and allows users to either create a new booking
+    or edit an existing one.
+    The time slots displayed are for a range of days starting from tomorrow,
+    with the ability to navigate through multiple pages of time slots using
+    the `day_offset` URL parameter.
+
+    **Context**
+
+    ``slots_by_day``
+        A dictionary where the key is the date and the value is a list of time
+        slots for that date, along with a flag indicating whether the slot has
+        an existing booking.
+
+    ``display_start``
+        The start date of the current time slot range being displayed.
+
+    ``display_end``
+        The end date of the current time slot range being displayed.
+
+    ``day_offset``
+        The offset for the day range, which determines which set of days
+        to display.
+
+    ``days_per_page``
+        The number of days shown per page of time slots.
+
+    ``today``
+        The current date (today's date).
+
+    ``booking``
+        The booking object :model:`bookings.Booking` that is being edited, if
+        the `booking_slug` is provided.
+
+    **Template:**
+
+    :template:`bookings/timeslot_list.html`
     """
     today = timezone.now().date()  # Get today's date
     start_date = today + timedelta(days=1)  # Start from tomorrow
@@ -96,7 +134,35 @@ def time_slot_view(request, booking_slug=None):
 
 @login_required
 def create_booking_view(request, time_slot_id):
-    """Handle booking creation for a selected time slot."""
+    """
+    Handles the creation of a booking for a selected time slot.
+
+    This view validates the selected time slot, displays a booking form, and
+    processes the booking submission. It associates the booking with the
+    logged-in user and the selected time slot, and saves the booking to
+    the database.
+
+    **Context**
+
+    ``form``
+        An instance of :form:`bookings.BookingForm`, pre-filled with the
+        selected time slot.
+
+    ``time_slot``
+        The time slot that the user is booking. An instance
+        of :model:`bookings.TimeSlot`
+
+    **Template:**
+
+    :template:`bookings/create_booking.html`
+
+    **Redirects**
+
+    After a successful booking creation, the user is redirected
+    to the 'My Bookings' page. If there is an error with the selected
+    time slot (e.g., unavailable), the user is redirected back to
+    the time slots page with an error message.
+    """
     time_slot = get_object_or_404(TimeSlot, id=time_slot_id)
 
     # Validate the time slot
@@ -130,7 +196,21 @@ def create_booking_view(request, time_slot_id):
 
 @login_required
 def my_bookings_view(request):
-    """Display the user's bookings and allow editing or cancellation."""
+    """
+    Display the user's bookings, separated into past and upcoming categories.
+    Users can view, edit, or cancel their bookings.
+
+    **Context**
+
+    ``past_bookings``
+        A paginated list of the user's past bookings (7 per page).
+    ``upcoming_bookings``
+        A paginated list of the user's upcoming bookings (7 per page).
+
+    **Template**
+
+    :template:`bookings/my_bookings.html`
+    """
     # Get the current user
     user = request.user
 
@@ -186,7 +266,25 @@ def my_bookings_view(request):
 
 @login_required
 def cancel_booking(request, slug):
-    """Cancel an existing booking."""
+    """
+    Cancel an existing booking if it belongs to the logged-in user
+    and is not in the past.
+
+    **Context**
+
+    ``booking``
+        An instance of :model:`bookings.Booking`.
+
+    **Behavior**
+
+    - If the booking is in the past:
+      Displays an error message and redirects to :view:`my_bookings_view`.
+    - If the booking belongs to another user:
+      Displays an error message and redirects to :view:`home`.
+    - If the booking is valid for cancellation:
+      Deletes the booking, displays a success message,
+      and redirects to :view:`my_bookings_view`.
+    """
     # Get the booking object by ID
     booking = get_object_or_404(Booking, slug=slug)
 
@@ -194,9 +292,8 @@ def cancel_booking(request, slug):
 
         # Ensure that the booking is not in the past (optional)
         if booking.time_slot.date < timezone.now().date():
-            return render(request, 'bookings/booking_error.html', {
-                'message': 'You cannot cancel bookings in the past.'
-            })
+            messages.error(request, "You cannot cancel bookings in the past.")
+            return redirect('my-bookings')  # Redirect to My Bookings page
 
         # Cancel the booking (delete it)
         booking.delete()
@@ -209,7 +306,44 @@ def cancel_booking(request, slug):
 
 @login_required
 def edit_booking_view(request, slug, slot_id=None):
-    """Edit an existing booking."""
+    """
+    Handle editing an existing booking.
+
+    Users can update their booking details or change the associated time slot
+    if a valid new time slot ID is provided.
+
+    **Parameters:**
+
+    - `slug`: The unique identifier for the booking to be edited.
+    - `slot_id` (optional): The ID of a new time slot to update the booking to.
+
+    **Context:**
+
+    - `form`: A pre-filled instance of :form:`BookingForm` for
+    editing the booking.
+    - `booking`: The :model:`Booking` instance being edited.
+    - `new_time_slot`: The :model:`TimeSlot` instance being updated to,
+    if applicable.
+
+    **Logic:**
+
+    - Validates if the logged-in user is authorized to edit the specified
+    booking.
+    - If a new time slot ID is provided:
+        - Checks its validity and availability, excluding the current booking.
+        - Displays an error message if the slot is invalid.
+    - Processes form submission to update the booking details.
+    - If successful, updates the booking and redirects to `my-bookings`.
+
+    **Permissions:**
+
+    - Only the user who created the booking can edit it. Unauthorized access
+      results in an error message and a redirect to the home page.
+
+    **Template:**
+
+    :template:`bookings/edit_booking.html`
+    """
     # Retrieve the booking
     booking = get_object_or_404(Booking, slug=slug)
 
@@ -254,7 +388,36 @@ def edit_booking_view(request, slug, slot_id=None):
 
 @login_required
 def change_time_slot_view(request, booking_slug):
-    """Redirect to the time slots view with the booking slug."""
+    """
+    Redirect the user to the time slots view to select a new time slot
+    for an existing booking.
+
+    **Parameters:**
+
+    - `booking_slug`: The unique identifier for the booking whose time slot
+    is to be changed.
+
+    **Logic:**
+
+    - Validates if the logged-in user is authorized to change the time slot
+    for the specified booking.
+    - If authorized:
+        - Redirects the user to the time slots view with the booking slug
+        passed as a parameter.
+    - If unauthorized:
+        - Displays an error message and redirects the user to the home page.
+
+    **Permissions:**
+
+    - Only the user who created the booking can change its time slot.
+    Unauthorized access results in an error message and a redirect
+    to the home page.
+
+    **Redirects:**
+
+    - To `time_slots` view with `booking_slug` if the user is authorized.
+    - To `home` if the user is not authorized.
+    """
     booking = get_object_or_404(Booking, slug=booking_slug)
 
     if (request.user == booking.user):

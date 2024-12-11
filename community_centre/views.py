@@ -5,12 +5,27 @@ from django.contrib import messages
 from .models import CommunityCentre
 from .utils import generate_time_slots
 
-# Create your views here.
-
 
 @staff_member_required
 def generate_time_slots_view(request, centre_id):
-    """View to generate time slots for a specific community center."""
+    """
+    View to generate time slots for a specific community center.
+
+    This view allows staff members to generate time slots for a selected
+    community center within a specified date range. It handles both the
+    display of the time slots generation form and the processing of the
+    form when submitted.
+
+    **Context**
+
+    ``centre``
+        The instance of :model:`community_centre.CommunityCentre` for which
+        the time slots are being generated.
+
+    **Template:**
+
+    :template:`community_centre/generate_time_slots.html`
+    """
     centre = get_object_or_404(CommunityCentre, pk=centre_id)
 
     if request.method == "POST":
@@ -46,7 +61,23 @@ def generate_time_slots_view(request, centre_id):
 
 
 def home_page(request):
+    """
+    Renders Homepage with Community Centre details
+    Displays an individual instance of
+    :model:`community_centre.CommunityCentre`
+    **Context**
 
+    ``community_centre``
+        the most recent instance of :model:`community_centre.CommunityCentre`
+    ``openning_day_name``
+        Name of openning day of the community centre
+    ``closing_day_name``
+        Name of closing day of the community centre
+
+    **Template:**
+
+    :template:`community_centre/home.html`
+    """
     DAYS_OF_WEEK = {
             1: 'Monday',
             2: 'Tuesday',
@@ -60,7 +91,6 @@ def home_page(request):
 
     context = {
         "community_centre": community_centre,
-        "community_centre_slug": community_centre.slug,
         'openning_day_name': DAYS_OF_WEEK.get(
                 community_centre.operating_start_day, "Invalid Day"),
         'closing_day_name': DAYS_OF_WEEK.get(
