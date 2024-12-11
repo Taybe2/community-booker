@@ -3,6 +3,173 @@
 This document outlines the testing process for the Community Booker App, including manual testing, automated tests, and validation checks to ensure the application meets user and technical requirements.
 
 ## Manual Testing
+This section outlines the manual testing process for the Community Centre Booking App, ensuring all features function as expected. Each section provides test cases for various functionalities, the steps to test them, the expected outcomes, and the results.
+
+### 1. User Authentication
+
+#### 1.1 Register a New User
+
+- **Steps:**
+  1. Navigate to the registration page.
+  2. Fill in the registration form with valid details (username, email, password).
+  3. Submit the form.
+- **Expected Outcome:** The user is registered, logged in with their new account and a confirmation message is displayed.
+- **Result:** Pass
+
+#### 1.2 Login
+
+- **Steps:**
+  1. Navigate to the login page.
+  2. Enter valid credentials and submit.
+- **Expected Outcome:**  A confirmation message is displayed and the user is redirected to the homepage.
+- **Result:** Pass
+
+#### 1.3 Logout
+
+- **Steps:**
+  1. Click the logout button from the navigation menu.
+- **Expected Outcome:** The user is logged out and redirected to the homepage, , a confirmation message is displayed.
+- **Result:** Pass
+
+---
+
+### 2. Booking Management
+
+#### 2.1 View Available Time Slots
+
+- **Steps:**
+  1. Navigate to the "Available Time Slots" page.
+  2. Verify that time slots starting from tomorrow are displayed.
+- **Expected Outcome:** Time slots are displayed, grouped by day, with available and booked slots clearly marked.
+- **Result:** Pass
+
+#### 2.2 Create a Booking
+
+- **Steps:**
+  1. Select an available time slot.
+  2. Click the "Book Selected Time Slot" button.
+  3. Fill out the booking form and submit.
+- **Expected Outcome:** The booking is successfully created, a confirmation message is displayed, and the user is redirected to the "My Bookings" page.
+- **Result:** Pass
+
+#### 2.3 Edit a Booking
+
+- **Steps:**
+  1. Navigate to the "My Bookings" page.
+  2. Select an upcoming booking and click "Edit".
+  3. Change the booking details and save.
+- **Expected Outcome:** The booking is updated successfully and a confirmation message is displayed.
+- **Result:** Pass
+
+#### 2.4 Cancel a Booking
+
+- **Steps:**
+  1. Navigate to the "My Bookings" page.
+  2. Select an upcoming booking and click "Cancel".
+  3. Confirm cancellation.
+- **Expected Outcome:** The booking is removed from the list, and a success message is displayed.
+- **Result:** Pass
+
+---
+
+### 3. Admin Functionality
+
+#### 3.1 Generate Time Slots
+
+- **Steps:**
+  1. Log in as a staff member.
+  2. Navigate to the "Generate Time Slots" page.
+  3. Enter a valid date range and submit.
+- **Expected Outcome:** Time slots are generated for the specified date range.
+- **Result:** Pass
+
+#### 3.2 Manage Bookings
+
+- **Steps:**
+  1. Log in as a staff member.
+  2. Navigate to the admin panel.
+  3. View, edit, or delete bookings.
+- **Expected Outcome:** Bookings are managed successfully.
+- **Result:** Pass
+
+---
+
+### 4. Error Handling
+
+#### 4.1 Accessing Restricted Pages
+
+- **Steps:**
+  1. Attempt to access a booking or admin page without logging in.
+- **Expected Outcome:** The user is redirected to the login page with an appropriate message.
+- **Result:** Pass
+
+#### 4.2 Invalid Booking Creation
+
+- **Steps:**
+  1. Attempt to create a booking for a past time slot by manipulating the URL (e.g., by using an ID smaller than those of today's time slots).
+- **Expected Outcome:** An error message is displayed, and the booking is not created.
+- **Result:** Pass
+
+---
+
+### 5. Accessing Other Users' Data
+
+#### **5.1 Accessing Another User's Booking**
+
+- **Scenario:** A user tries to access a booking belonging to another user.
+- **Steps:**
+  1. Log in as User A.
+  2. Attempt to view, edit, or cancel a booking belonging to User B by manipulating the URL (e.g., by using another booking's slug).
+- **Expected Outcome:** Access is denied, and the user is redirected to a safe page (e.g., "Home" or "My Bookings") with an error message such as "You are not authorized to access this booking."
+- **Result:** [Pass]
+
+#### **5.2 Choosing a Time Slot for a Booking, made by another user**
+
+- **Scenario:** A user attempts to choose a different Time slot for anoother user's booking.
+- **Steps:**
+  1. Log in as User A.
+  2. Attempt to access User B's private booking details via the "Available Time Slots".
+- **Expected Outcome:**  Access is denied, and the user is redirected to a safe page (e.g., "Home" or "My Bookings") with an error message such as "You are not authorized to edit this booking."
+- **Result:** [Pass]
+
+#### **5.3 Accessing Generate Time Slots Page Without Admin Privileges**
+
+- **Scenario:** A regular user tries to view generate time slots page intended for admins.
+- **Steps:**
+  1. Log in as a regular user.
+  2. Attempt to access the "Generate Time Slots" page.
+- **Expected Outcome:** Access is denied, and the user is asked to login with a different account.
+- **Result:** [Pass]
+
+#### **5.4 Accessing Admin Pages**
+
+- **Scenario:** A non-admin user attempts to access the admin panel or admin-only views.
+- **Steps:**
+  1. Log in as a non-admin user.
+  2. Attempt to access an admin page directly (e.g., `/admin/`).
+- **Expected Outcome:**  Access is denied, and the user is asked to login with a different account.
+- **Result:** [Pass]
+
+---
+
+### 5. UI and Navigation
+
+#### 5.1 Navigation Bar
+
+- **Steps:**
+  1. Test all navigation links for logged-in and logged-out users.
+- **Expected Outcome:** Links are functional and redirect to the correct pages.
+- **Result:** Pass
+
+#### 5.2 Responsive Design
+
+- **Steps:**
+  1. Test the application on various screen sizes and devices.
+  2. Resize the browser window to observe the responsive design.
+- **Expected Outcome:** The UI adjusts correctly for all tested resolutions.
+- **Result:** Pass
+
+---
 
 ## Automated Testing
 
@@ -78,3 +245,5 @@ I manually checked all Python files in the project using the CI Python Linter. T
 
 **Result:**  
 After manually checking and fixing all files, the Python code now complies with PEP8 standards as verified by the CI Python Linter.
+
+**Date:** [Date of Documentation]

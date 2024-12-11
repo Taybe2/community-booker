@@ -11,7 +11,7 @@
       <p>New Time Slot: {{ new_time_slot.date|date:"M d, Y" }} from {{ new_time_slot.start_time|date:"g A" }} to {{ new_time_slot.end_time|date:"g A" }}<br>
         Remember to save your changes to update your booking with the new time slot.</p>
     {% else %}
-      <p>Time Slot: {{ booking.occasion }} - {{ booking.time_slot.date|date:"M n, Y" }} from {{ booking.time_slot.start_time|date:"g A" }} to {{ booking.time_slot.end_time|date:"g A" }}</p>
+      <p>Time Slot: {{ booking.time_slot.date|date:"M n, Y" }}, from {{ booking.time_slot.start_time|date:"g A" }} to {{ booking.time_slot.end_time|date:"g A" }}</p>
     {% endif %}
     <p>
       <a href="{% url 'change-time-slot' booking.slug %}">Change Time Slot</a>
