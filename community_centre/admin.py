@@ -7,6 +7,11 @@ from .models import CommunityCentre
 # Register your models here.
 @admin.register(CommunityCentre)
 class CommunityCentreAdmin(admin.ModelAdmin):
+    """
+    Lists fields for display in admin, fields to prepopulate
+    and generate time slots button.
+    """
+
     list_display = (
         'name',
         'address',
