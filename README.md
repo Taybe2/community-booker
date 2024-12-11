@@ -283,8 +283,8 @@ The photo in the homepage welcome section was sourced from **Pixabay**, created 
 A special thanks to the developers and contributors of these libraries for their hard work and contributions.
 
 #### Inspiration
-- Inspired by https://www.phorest.com/salon/lavenderhairdesign for layout idea of the Available Time Slots Page.
-- Based on the Django Blog Project tutorial by [Niel McEwen] for Django best practices.
+- Inspired by [Lavender Hair Design](https://www.phorest.com/salon/lavenderhairdesign) for the layout idea of the Available Time Slots Page.
+- Based on the Django Blog Project tutorial by Niel McEwen for Django best practices.
 
 #### Acknowledgements
-- Special thanks to David Calikes and Kevin Loughrey for their support and guidance.
+- Special thanks to my mentors for their support and guidance.
