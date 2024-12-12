@@ -262,6 +262,16 @@ The Community Booker app is hosted on Heroku. Below are the steps to deploy it u
 
 ### 13. Contributing
 
+Contributions are welcome! To get started:
+
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Make your changes.
+4. Commit your changes.
+5. Push to your fork and create a pull request.
+
+Thank you for your contributions!
+
 ------
 
 ### 14. License

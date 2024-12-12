@@ -110,6 +110,19 @@ This section outlines the manual testing process for the Community Centre Bookin
 - **Expected Outcome:** An error message is displayed, and the booking is not created.
 - **Result:** Pass
 
+#### 4.2 Accessing the Create Booking Page for an Already Booked Time Slot
+
+- **Scenario:** A user tries to access the **Create Booking** page for a time slot that has already been booked.
+
+- **Steps:**
+  1. Ensure a time slot is already booked.
+  2. Attempt to access the **Create Booking** page directly via the URL (e.g., `/bookings/create/<booked_time_slot_id>`).
+
+- **Expected Outcome:** 
+  - The user is redirected to the **Available Time Slots** page.
+  - A message is displayed indicating that the time slot is already reserved.
+
+- **Result:** [Pass]
 ---
 
 ### 5. Accessing Other Users' Data
