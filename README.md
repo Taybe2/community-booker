@@ -210,6 +210,22 @@ This guide provides step-by-step instructions on how to use the Community Booker
 ------
 
 ### 9. Screenshots
+To ensure the responsiveness of the Community Centre Booking App, the following screenshots were taken across different devices and screen sizes:
+
+#### 1. Desktop View
+![Desktop View](docs/images/screenshots/desktop/homepage.png)
+*Homepage on Desktop Screen*
+
+![Desktop View](docs/images/screenshots/desktop/timeslots.png)
+*Available Timeslots Page on Desktop Screen*
+
+![Desktop View](docs/images/screenshots/desktop/create-booking.png)
+*Create Booking Page on Desktop Screen*
+
+![Desktop View](docs/images/screenshots/desktop/my-bookings.png)
+*My Bookings Page on Desktop Screen*
+
+
 
 ------
 
@@ -377,6 +393,8 @@ Thank you for your contributions!
 ------
 
 ### 14. License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ------
 
