@@ -1,6 +1,7 @@
 
 ## Community Booker App
 A simplified platform to manage and book time slots for community centers.
+# **[Link to Live Site](https://community-booker-app-9f0552b871a8.herokuapp.com/)**  
 
 #### Table of Contents
 - [1. Project Overview](#1-project-overview)
@@ -52,6 +53,8 @@ All the tasks, user stories, and issues were tracked on the project board. You c
 - **My Bookings Page:** Users can view, edit, or cancel their bookings.
 - **Resposive Design:** Optimized for both desktop and mobile devices.
 
+##### [ Back to Top ](#table-of-contents)
+
 ------
 ### 4. Wireframes
 The wireframes below illustrate the initial design concepts for the Community Booker App, highlighting the layout and navigation flow of key pages such as the homepage, booking page, and user booking management pages.
@@ -81,6 +84,8 @@ These wireframes were created using Balsamiq, a user-friendly tool for creating 
 #### Note on Iterations
 The wireframes served as the foundation for the app's UI design. Some elements have been refined during implementation to improve user experience.
 
+##### [ Back to Top ](#table-of-contents)
+
 ------
 
 ### 5. Entity Relationship Diagram (ERD)
@@ -96,6 +101,8 @@ Below is the Entity Relationship Diagram (ERD) that shows the structure of the d
 
 ![ERD Diagram](docs/images/erd-diagram.png)
 
+##### [ Back to Top ](#table-of-contents)
+
 ------
 
 ### 6. Technologies Used
@@ -105,6 +112,8 @@ Below is the Entity Relationship Diagram (ERD) that shows the structure of the d
 - **Hosting:** Heroku
 - **Media Storage:** Cloudinary
 - **Tools:** Bootstrap, Django Crispy Forms
+
+##### [ Back to Top ](#table-of-contents)
 
 ------
 
@@ -135,6 +144,8 @@ Below is the Entity Relationship Diagram (ERD) that shows the structure of the d
   ```bash
   python manage.py runserver
   ```
+
+##### [ Back to Top ](#table-of-contents)
 
 ------
 
@@ -194,6 +205,8 @@ This guide provides step-by-step instructions on how to use the Community Booker
   - On the Sign Out page, you will be asked if you're sure you want to sign out.
   - Click the "Sign Out" button to complete the logout process.
 
+##### [ Back to Top ](#table-of-contents)
+
 ------
 
 ### 9. Screenshots
@@ -242,6 +255,7 @@ The Community Booker app is hosted on Heroku. Below are the steps to deploy it u
 **Notes**
   - Make sure DEBUG in settings.py is set to False for production.
 
+##### [ Back to Top ](#table-of-contents)
 
 ------
 
@@ -258,6 +272,8 @@ The Community Booker app is hosted on Heroku. Below are the steps to deploy it u
 #### 4. Admin Booking Approval
   Introduce a booking approval system where admins must review and approve or reject bookings before they are finalized. This ensures better control over the scheduling process and prevents conflicts or unauthorized bookings.
 
+##### [ Back to Top ](#table-of-contents)
+
 ------
 
 ### 13. Contributing
@@ -271,6 +287,8 @@ Contributions are welcome! To get started:
 5. Push to your fork and create a pull request.
 
 Thank you for your contributions!
+
+##### [ Back to Top ](#table-of-contents)
 
 ------
 
@@ -298,3 +316,5 @@ A special thanks to the developers and contributors of these libraries for their
 
 #### Acknowledgements
 - Special thanks to my mentors for their support and guidance.
+
+##### [ Back to Top ](#table-of-contents)
