@@ -222,6 +222,55 @@ This section outlines the manual testing process for the Community Centre Bookin
 
 ## Automated Testing
 
+## Automated Testing
+
+Automated testing was implemented to ensure the robustness and reliability of the key features in the Community Centre Booking App. The following test files were created, focusing on forms and views:
+
+### 1. `test_booking_form.py`
+- **Purpose:** To verify that the booking form works as expected and validates user inputs correctly.
+- **Key Tests:**
+  - Validation of required fields.
+  - Handling of invalid or missing inputs.
+  - Successful form submission with valid data.
+
+### 2. `test_cancel_booking_view.py`
+- **Purpose:** To test the cancellation of bookings.
+- **Key Tests:**
+  - Ensuring only authorized users can cancel their bookings.
+  - Verifying that the booking is properly removed upon cancellation.
+  - Handling invalid or non-existent bookings gracefully.
+
+### 3. `test_create_booking_view.py`
+- **Purpose:** To ensure that the booking creation process works correctly.
+- **Key Tests:**
+  - Proper rendering of the create booking page.
+  - Successful creation of a booking with valid inputs.
+  - Prevention of duplicate bookings for the same time slot.
+  - Redirection and appropriate messaging for invalid time slots.
+
+### 4. `test_edit_booking_view.py`
+- **Purpose:** To test the functionality of editing existing bookings.
+- **Key Tests:**
+  - Rendering of the edit page with pre-filled data.
+  - Successful update of a booking's details.
+  - Prevention of changes to non-existent or unauthorized bookings.
+
+### 5. `test_timeslot_view.py`
+- **Purpose:** To validate the functionality of viewing available time slots.
+- **Key Tests:**
+  - Displaying time slots starting from the next day.
+  - Differentiating between available and booked slots.
+  - Proper handling of edge cases like empty or invalid time slot data.
+
+### Results
+All automated tests were executed using the Django testing framework. The test suite passed successfully, ensuring that the app's core functionalities perform as intended under various scenarios.  
+
+### Command to Run Tests
+To execute the automated test suite, use the following command:  
+```bash
+python3 manage.py test
+```
+
 ## Validation Testing
 Validation checks for HTML, CSS and Python
 
