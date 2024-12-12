@@ -163,7 +163,14 @@ def create_booking_view(request, time_slot_id):
     time slot (e.g., unavailable), the user is redirected back to
     the time slots page with an error message.
     """
-    time_slot = get_object_or_404(TimeSlot, id=time_slot_id)
+    time_slot = TimeSlot.objects.filter(id=time_slot_id).first()
+    
+    if not time_slot:
+        messages.error(
+            request,
+            "The selected time slot is invalid or does not exist.")
+        return redirect('time_slots')
+
 
     # Validate the time slot
     is_valid, error_message = is_time_slot_valid_and_available(time_slot)

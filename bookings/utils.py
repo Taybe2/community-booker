@@ -25,6 +25,6 @@ def is_time_slot_valid_and_available(time_slot, exclude_booking_id=None):
     if hasattr(time_slot, 'booking') and (
             exclude_booking_id is None or
             time_slot.booking.id != exclude_booking_id):
-        return False, "Time slot is already reserved."
+        return False, "Time slot is already reserved for another event."
 
     return True, None

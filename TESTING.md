@@ -110,7 +110,14 @@ This section outlines the manual testing process for the Community Centre Bookin
 - **Expected Outcome:** An error message is displayed, user is redirected to time slots page and the booking is not created.
 - **Result:** Pass
 
-#### 4.2 Accessing the Create Booking Page for an Already Booked Time Slot
+#### 4.3 Booking Creation for Non-Existing Time Slot
+
+- **Steps:**
+  1. Attempt to create a booking for a non-existent time slot by manipulating the URL (e.g., by using an ID that doesn't exist).
+- **Expected Outcome:** An error message is displayed, user is redirected to time slots page and the booking is not created.
+- **Result:** Pass
+
+#### 4.4 Accessing the Create Booking Page for an Already Booked Time Slot
 
 - **Scenario:** A user tries to access the **Create Booking** page for a time slot that has already been booked.
 
@@ -123,6 +130,35 @@ This section outlines the manual testing process for the Community Centre Bookin
   - A message is displayed indicating that the time slot is already reserved.
 
 - **Result:** [Pass]
+
+#### 4.5 Accessing the Edit Booking Page for a Non-existent Time Slot
+
+- **Scenario:** A user tries to access the **Edit Booking** page with a new time slot that doesn't exist.
+
+- **Steps:**
+  1. Ensure a time slot doesn't exist.
+  2. Attempt to access the **Edit Booking** page directly via the URL (e.g., `/bookings/<booking_slug>/edit/<non_existent_time_slot_id>`).
+
+- **Expected Outcome:** 
+  - The user is redirected to the **Available Time Slots** page.
+  - A message is displayed indicating that the time slot doesn't exist.
+
+- **Result:** [Pass]
+
+#### 4.5 Accessing the Edit Booking Page for Already Booked Time Slot
+
+- **Scenario:** A user tries to access the **Edit Booking** page with a new time slot that is booked for another occasion.
+
+- **Steps:**
+  1. Ensure a time slot is booked for another event.
+  2. Attempt to access the **Edit Booking** page directly via the URL (e.g., `/bookings/<booking_slug>/edit/<booked_time_slot_id>`).
+
+- **Expected Outcome:** 
+  - The user is redirected to the **Available Time Slots** page.
+  - A message is displayed indicating that the time slot is already booked for another event.
+
+- **Result:** [Pass]
+
 ---
 
 ### 5. Accessing Other Users' Data
