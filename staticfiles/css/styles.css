@@ -7,7 +7,7 @@
     --border-color: #557C83 ; /* Border color for buttons and elements */
     --text-muted: #557C83;  /* Muted text color for past bookings */
 }
-
+/*** General Styles **/
 body {
     font-family: "PT Sans", sans-serif;
 }
@@ -93,7 +93,11 @@ body {
 .btn-check:checked + .btn-timeslot {
     background: var(--hover-color);
     color: var(--secondary-color);
-    border-color: var(--hover-color);
+    border-color: transparent;
+}
+
+.btn-check:disabled + .btn, .btn-check[disabled] + .btn {
+    opacity: 1;
 }
 
 /* Dynamic error message */
