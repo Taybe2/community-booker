@@ -262,10 +262,43 @@ This guide provides step-by-step instructions on how to use the Community Booker
 |                              | Responsive Design                                | UI adjusts correctly                 | Pass       |
 
 
-#### 5. Django Automated Testing:  
+#### 6. Django Automated Testing:  
   In addition to the above tools, I also utilized the Django automated testing within my Gitpod workspace to ensure the functionality and stability of the application.
 
+#### 7. Accessibility Testing
+
+To ensure that the Community Centre Booking App is accessible to users with disabilities, the **WAVE Web Accessibility Evaluation Tool** was used to evaluate the accessibility of key pages.
+
+##### Results:
+1. **Home Page**
+   - No errors detected.
+   - Minor warnings for Skipped heading level and Redundant link.
+   - Screenshot: ![Home Page Accessibility](docs/images/accessibility/home.png)
+
+2. **Available Time Slots Page**
+    - No errors detected.
+   - Minor warnings for Missing fieldset, Skipped heading level and Redundant link.
+   - Screenshot: ![Available Time Slots Page Accessibility](docs/images/accessibility/timeslots.png)
+
+3. **My Bookings Page**
+  - No errors detected.
+  - Minor warnings for Skipped heading level and Redundant link.
+  - Screenshot: ![My Bookings Page Accessibility](docs/images/accessibility/my-bookings.png)
+
+3. **Create Booking Page**
+  - No errors detected.
+  - Minor warning for a Redundant link.
+  - Screenshot: ![Create Booking Page Accessibility](docs/images/accessibility/create-booking.png)
+
+### Improvements:
+- Resolved contrast ratio warnings by adjusting color schemes.
+- Ensured all form elements and buttons are labeled for screen readers.
+- Verified keyboard navigation across all pages.
+
+
 For detailed information about testing, refer to the [TESTING.md](./TESTING.md) file.
+
+##### [ Back to Top ](#table-of-contents)
 
 ------
 

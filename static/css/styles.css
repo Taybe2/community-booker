@@ -96,6 +96,10 @@ body {
     border-color: transparent;
 }
 
+.btn-check:disabled + .btn, .btn-check[disabled] + .btn {
+    opacity: 1;
+}
+
 /* Dynamic error message */
 #message-container {
     display: none;

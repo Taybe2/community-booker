@@ -263,7 +263,7 @@ Automated testing was implemented to ensure the robustness and reliability of th
   - Proper handling of edge cases like empty or invalid time slot data.
 
 ### Results
-All automated tests were executed using the Django testing framework. The test suite passed successfully, ensuring that the app's core functionalities perform as intended under various scenarios.  
+All automated tests were executed using the Django testing framework. The test suite passed successfully, indicating that the app's core functionalities are likely to perform as intended under various scenarios.
 
 ### Command to Run Tests
 To execute the automated test suite, use the following command:  
