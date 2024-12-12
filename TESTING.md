@@ -190,7 +190,7 @@ This section outlines the manual testing process for the Community Centre Bookin
 - **Expected Outcome:** Access is denied, and the user is asked to login with a different account.
 - **Result:** [Pass]
 
-#### **5.4 Accessing Admin Pages**
+#### **5.4 Non-Admin User Accessing Admin Pages**
 
 - **Scenario:** A non-admin user attempts to access the admin panel or admin-only views.
 - **Steps:**

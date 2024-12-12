@@ -237,26 +237,29 @@ This guide provides step-by-step instructions on how to use the Community Booker
 
 #### 5. Manual Testing:
 
-| **Test Case**                                      | **Expected Outcome** | **Result** |
-|----------------------------------------------------|----------------------|------------|
-| **1.1 Register a New User**                        | User registered       | Pass       |
-| **1.2 Login**                                      | User logged in        | Pass       |
-| **1.3 Logout**                                     | User logged out       | Pass       |
-| **2.1 View Available Time Slots**                  | Time slots displayed  | Pass       |
-| **2.2 Create a Booking**                           | Booking created       | Pass       |
-| **2.3 Edit a Booking**                             | Booking updated       | Pass       |
-| **2.4 Cancel a Booking**                           | Booking cancelled     | Pass       |
-| **3.1 Generate Time Slots**                        | Slots generated       | Pass       |
-| **3.2 Manage Bookings**                            | Bookings managed      | Pass       |
-| **4.1 Accessing Restricted Pages**                 | Redirected to login   | Pass       |
-| **4.2 Invalid Booking Creation**                   | Error displayed       | Pass       |
-| **4.3 Accessing the Create Booking Page for an Already Booked Time Slot** | Redirected            | Pass       |
-| **5.1 Accessing Another User's Booking**           | Access denied         | Pass       |
-| **5.2 Choosing a Time Slot for a Booking Made by Another User** | Access denied         | Pass       |
-| **5.3 Accessing Generate Time Slots Page Without Admin Privileges** | Access denied         | Pass       |
-| **5.4 Accessing Admin Pages**                      | Access denied         | Pass       |
-| **5.5 Navigation Bar**                             | Links functional      | Pass       |
-| **5.6 Responsive Design**                          | UI adjusted           | Pass       |
+| **Category**                 | **Test Case**                                      | **Expected Outcome**                 | **Result** |
+|------------------------------|--------------------------------------------------|--------------------------------------|------------|
+| **User Authentication**      | Register a New User                              | User registered, logged in           | Pass       |
+|                              | Login                                            | User logged in, redirected           | Pass       |
+|                              | Logout                                           | User logged out, redirected          | Pass       |
+| **Booking Management**       | View Available Time Slots                        | Time slots displayed correctly       | Pass       |
+|                              | Create a Booking                                 | Booking created, confirmation shown  | Pass       |
+|                              | Edit a Booking                                   | Booking updated, confirmation shown  | Pass       |
+|                              | Cancel a Booking                                 | Booking removed, confirmation shown  | Pass       |
+| **Admin Functionality**      | Generate Time Slots                              | Time slots generated successfully    | Pass       |
+|                              | Manage Bookings                                  | Bookings viewed/edited/deleted       | Pass       |
+| **Error Handling**           | Accessing Restricted Pages                       | Redirected, error message shown      | Pass       |
+|                              | Invalid Booking Creation                         | Redirected, error message shown      | Pass       |
+|                              | Non-Existing Time Slot Booking                   | Redirected, error message shown      | Pass       |
+|                              | Accessing Already Booked Time Slot               | Redirected, error message shown      | Pass       |
+|                              | Accessing Non-Existent Time Slot in Edit Booking | Redirected, error message shown      | Pass       |
+|                              | Editing to Booked Time Slot                      | Redirected, error message shown      | Pass       |
+| **Access Control**           | Accessing Another User's Booking                 | Access denied, redirected            | Pass       |
+|                              | Choosing Time Slot of Another User’s Booking     | Access denied, redirected            | Pass       |
+|                              | Accessing Generate Time Slots Without Privileges | Access denied                        | Pass       |
+|                              | Non-Admin User Accessing Admin Pages                           | Access denied                        | Pass       |
+| **UI and Navigation**        | Navigation Bar                                   | Links functional                     | Pass       |
+|                              | Responsive Design                                | UI adjusts correctly                 | Pass       |
 
 
 #### 5. Django Automated Testing:  
