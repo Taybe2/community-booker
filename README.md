@@ -273,22 +273,22 @@ To ensure that the Community Centre Booking App is accessible to users with disa
 1. **Home Page**
    - No errors detected.
    - Minor warnings for Skipped heading level and Redundant link.
-   - Screenshot: ![Home Page Accessibility](docs/images/accessibility/home.png)
+   - Screenshot: ![Home Page Accessibility](docs/images/accessibility/home-accessibility.png)
 
 2. **Available Time Slots Page**
     - No errors detected.
    - Minor warnings for Missing fieldset, Skipped heading level and Redundant link.
-   - Screenshot: ![Available Time Slots Page Accessibility](docs/images/accessibility/timeslots.png)
+   - Screenshot: ![Available Time Slots Page Accessibility](docs/images/accessibility/timeslots-accessibility.png)
 
 3. **My Bookings Page**
   - No errors detected.
   - Minor warnings for Skipped heading level and Redundant link.
-  - Screenshot: ![My Bookings Page Accessibility](docs/images/accessibility/my-bookings.png)
+  - Screenshot: ![My Bookings Page Accessibility](docs/images/accessibility/my-bookings-accessibility.png)
 
 3. **Create Booking Page**
   - No errors detected.
   - Minor warning for a Redundant link.
-  - Screenshot: ![Create Booking Page Accessibility](docs/images/accessibility/create-booking.png)
+  - Screenshot: ![Create Booking Page Accessibility](docs/images/accessibility/create-booking-accessibility.png)
 
 ### Improvements:
 - Resolved contrast ratio warnings by adjusting color schemes.
