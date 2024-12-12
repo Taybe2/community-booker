@@ -296,6 +296,16 @@ def cancel_booking(request, slug):
     booking = get_object_or_404(Booking, slug=slug)
 
     if (request.user == booking.user):
+        time_slot = booking.time_slot
+
+        # Validate the time slot
+        is_valid, error_message = is_time_slot_valid_and_available(
+            time_slot, exclude_booking_id=booking.id
+        )
+
+        if not is_valid:
+            messages.error(request, error_message)
+            return redirect('my-bookings')
 
         # Ensure that the booking is not in the past (optional)
         if booking.time_slot.date < timezone.now().date():
@@ -355,6 +365,17 @@ def edit_booking_view(request, slug, slot_id=None):
     booking = get_object_or_404(Booking, slug=slug)
 
     if (request.user == booking.user):
+        time_slot = booking.time_slot
+
+        # Validate the time slot
+        is_valid, error_message = is_time_slot_valid_and_available(
+            time_slot, exclude_booking_id=booking.id
+        )
+
+        if not is_valid:
+            messages.error(request, error_message)
+            return redirect('my-bookings')
+
         new_time_slot = None
 
         if slot_id:

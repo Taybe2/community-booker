@@ -293,6 +293,6 @@ I manually checked all Python files in the project using the CI Python Linter. T
   - Any other PEP8-related errors or warnings.
 
 **Result:**  
-After manually checking and fixing all files, the Python code now complies with PEP8 standards as verified by the CI Python Linter.
+After thorough review and adjustments, the Python code complies with PEP8 standards as verified by the CI Python Linter, with a few minor exceptions that don't affect functionality.
 
-**Date:** [Date of Documentation]
+**Date:** [12/12/2024]
