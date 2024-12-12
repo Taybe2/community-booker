@@ -238,6 +238,21 @@ To ensure the responsiveness of the Community Centre Booking App, the following 
 ![Tablet View](docs/images/screenshots/tablet/my-bookings.png)
 ##### *My Bookings Page on Tablet Screen*
 
+### 2. Mobile View
+![Mobile View](docs/images/screenshots/mobile/homepage.png)
+##### *Homepage on Mobile Screen*
+
+![Mobile View](docs/images/screenshots/mobile/timeslots.png)
+##### *Available Timeslots Page on Mobile Screen*
+
+![Mobile View](docs/images/screenshots/mobile/create-booking.png)
+##### *Create Booking Page on Mobile Screen*
+
+![Mobile View](docs/images/screenshots/mobile/my-bookings.png)
+##### *My Bookings Page on Mobile Screen*
+
+
+##### [ Back to Top ](#table-of-contents)
 ------
 
 ### 10. Testing
