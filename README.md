@@ -214,14 +214,14 @@ This guide provides step-by-step instructions on how to use the Community Booker
 ------
 
 ### 10. Testing
-- **HTML Validation**:  
+#### 1. HTML Validation:  
   I used the [W3 HTML Validator](https://validator.w3.org/#validate_by_input+with_options) to check the HTML across my site, with most pages passing without errors. Issues were identified on a few pages, including unnecessary attributes and minor accessibility warnings, all of which were resolved, except for unclosed HTML tags in the Django Allauth templates on the Register Page, which I deferred fixing due to time constraints.
 
-- **CSS Validation**:  
+#### 2. CSS Validation:  
   I used the [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) to check the styles.css file, and no errors were found. A warning about identical ``background-color`` and ``border-color`` in a specific selector was resolved by changing the ``border-color`` to ``transparent``.  
   ![CSS validation results](/docs/images/W3C_CSS.png)
 
-- **PEP8 Compliance Check**:
+#### 3. PEP8 Compliance Check:
   I used the [CI Python Linter](https://pep8ci.herokuapp.com/) to ensure my Python code follows the PEP8 style guide for readability and consistency. The linter flagged issues like line length, improper indentation, and missing or extra whitespace, which I reviewed and corrected across all files. After making the necessary adjustments, the code now complies with PEP8 standards.
 
   However, in some cases, like the following test assertion:
@@ -235,7 +235,31 @@ This guide provides step-by-step instructions on how to use the Community Booker
 
   I couldn't shorten the line further while keeping the logic clear and readable. It checks whether the expected message exists in the list of messages, which requires iterating over the list, making it difficult to reduce the line length without sacrificing clarity.
 
-- **Django Automated Testing**:  
+#### 5. Manual Testing:
+
+| **Test Case**                                      | **Expected Outcome** | **Result** |
+|----------------------------------------------------|----------------------|------------|
+| **1.1 Register a New User**                        | User registered       | Pass       |
+| **1.2 Login**                                      | User logged in        | Pass       |
+| **1.3 Logout**                                     | User logged out       | Pass       |
+| **2.1 View Available Time Slots**                  | Time slots displayed  | Pass       |
+| **2.2 Create a Booking**                           | Booking created       | Pass       |
+| **2.3 Edit a Booking**                             | Booking updated       | Pass       |
+| **2.4 Cancel a Booking**                           | Booking cancelled     | Pass       |
+| **3.1 Generate Time Slots**                        | Slots generated       | Pass       |
+| **3.2 Manage Bookings**                            | Bookings managed      | Pass       |
+| **4.1 Accessing Restricted Pages**                 | Redirected to login   | Pass       |
+| **4.2 Invalid Booking Creation**                   | Error displayed       | Pass       |
+| **4.3 Accessing the Create Booking Page for an Already Booked Time Slot** | Redirected            | Pass       |
+| **5.1 Accessing Another User's Booking**           | Access denied         | Pass       |
+| **5.2 Choosing a Time Slot for a Booking Made by Another User** | Access denied         | Pass       |
+| **5.3 Accessing Generate Time Slots Page Without Admin Privileges** | Access denied         | Pass       |
+| **5.4 Accessing Admin Pages**                      | Access denied         | Pass       |
+| **5.5 Navigation Bar**                             | Links functional      | Pass       |
+| **5.6 Responsive Design**                          | UI adjusted           | Pass       |
+
+
+#### 5. Django Automated Testing:  
   In addition to the above tools, I also utilized the Django automated testing within my Gitpod workspace to ensure the functionality and stability of the application.
 
 For detailed information about testing, refer to the [TESTING.md](./TESTING.md) file.

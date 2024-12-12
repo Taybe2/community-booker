@@ -107,7 +107,7 @@ This section outlines the manual testing process for the Community Centre Bookin
 
 - **Steps:**
   1. Attempt to create a booking for a past time slot by manipulating the URL (e.g., by using an ID smaller than those of today's time slots).
-- **Expected Outcome:** An error message is displayed, and the booking is not created.
+- **Expected Outcome:** An error message is displayed, user is redirected to time slots page and the booking is not created.
 - **Result:** Pass
 
 #### 4.2 Accessing the Create Booking Page for an Already Booked Time Slot
