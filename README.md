@@ -213,65 +213,65 @@ This guide provides step-by-step instructions on how to use the Community Booker
 To ensure the responsiveness of the Community Centre Booking App, the following screenshots were taken across different devices and screen sizes:
 
 #### 1. Desktop View
-![Desktop View](docs/images/screenshots/desktop/homepage.png)
 ##### *Homepage on Desktop Screen*
+![Desktop View](docs/images/screenshots/desktop/homepage.png)
 
 ---
 
-![Desktop View](docs/images/screenshots/desktop/timeslots.png)
 ##### *Available Timeslots Page on Desktop Screen*
+![Desktop View](docs/images/screenshots/desktop/timeslots.png)
 
 ---
 
-![Desktop View](docs/images/screenshots/desktop/create-booking.png)
 ##### *Create Booking Page on Desktop Screen*
+![Desktop View](docs/images/screenshots/desktop/create-booking.png)
 
 ---
 
-![Desktop View](docs/images/screenshots/desktop/my-bookings.png)
 ##### *My Bookings Page on Desktop Screen*
+![Desktop View](docs/images/screenshots/desktop/my-bookings.png)
 
 ---
 
 ### 2. Tablet View
-![Tablet View](docs/images/screenshots/tablet/homepage.png)
 ##### *Homepage on Tablet Screen*
+![Tablet View](docs/images/screenshots/tablet/homepage.png)
 
 ---
 
-![Tablet View](docs/images/screenshots/tablet/timeslots.png)
 ##### *Available Timeslots Page on Tablet Screen*
+![Tablet View](docs/images/screenshots/tablet/timeslots.png)
 
 ---
 
-![Tablet View](docs/images/screenshots/tablet/create-booking.png)
 ##### *Create Booking Page on Tablet Screen*
+![Tablet View](docs/images/screenshots/tablet/create-booking.png)
 
 ---
 
-![Tablet View](docs/images/screenshots/tablet/my-bookings.png)
 ##### *My Bookings Page on Tablet Screen*
+![Tablet View](docs/images/screenshots/tablet/my-bookings.png)
 
 ---
 
 ### 2. Mobile View
-![Mobile View](docs/images/screenshots/mobile/homepage.png)
 ##### *Homepage on Mobile Screen*
+![Mobile View](docs/images/screenshots/mobile/homepage.png)
 
 ---
 
-![Mobile View](docs/images/screenshots/mobile/timeslots.png)
 ##### *Available Timeslots Page on Mobile Screen*
+![Mobile View](docs/images/screenshots/mobile/timeslots.png)
 
 ---
 
-![Mobile View](docs/images/screenshots/mobile/create-booking.png)
 ##### *Create Booking Page on Mobile Screen*
+![Mobile View](docs/images/screenshots/mobile/create-booking.png)
 
 ---
 
-![Mobile View](docs/images/screenshots/mobile/my-bookings.png)
 ##### *My Bookings Page on Mobile Screen*
+![Mobile View](docs/images/screenshots/mobile/my-bookings.png)
 
 ---
 
