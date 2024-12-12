@@ -293,7 +293,14 @@ def cancel_booking(request, slug):
       and redirects to :view:`my_bookings_view`.
     """
     # Get the booking object by ID
-    booking = get_object_or_404(Booking, slug=slug)
+    #booking = get_object_or_404(Booking, slug=slug)
+    booking = Booking.objects.filter(slug=slug).first()
+
+    if not booking:
+        messages.error(
+            request,
+            "This booking is invalid or does not exist.")
+        return redirect('my-bookings')
 
     if (request.user == booking.user):
         time_slot = booking.time_slot
@@ -306,11 +313,6 @@ def cancel_booking(request, slug):
         if not is_valid:
             messages.error(request, error_message)
             return redirect('my-bookings')
-
-        # Ensure that the booking is not in the past (optional)
-        if booking.time_slot.date < timezone.now().date():
-            messages.error(request, "You cannot cancel bookings in the past.")
-            return redirect('my-bookings')  # Redirect to My Bookings page
 
         # Cancel the booking (delete it)
         booking.delete()
@@ -362,7 +364,14 @@ def edit_booking_view(request, slug, slot_id=None):
     :template:`bookings/edit_booking.html`
     """
     # Retrieve the booking
-    booking = get_object_or_404(Booking, slug=slug)
+    #booking = get_object_or_404(Booking, slug=slug)
+    booking = Booking.objects.filter(slug=slug).first()
+
+    if not booking:
+        messages.error(
+            request,
+            "This booking is invalid or does not exist.")
+        return redirect('my-bookings')
 
     if (request.user == booking.user):
         time_slot = booking.time_slot
