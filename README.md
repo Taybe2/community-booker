@@ -214,6 +214,30 @@ This guide provides step-by-step instructions on how to use the Community Booker
 ------
 
 ### 10. Testing
+- **HTML Validation**:  
+  I used the [W3 HTML Validator](https://validator.w3.org/#validate_by_input+with_options) to check the HTML across my site, with most pages passing without errors. Issues were identified on a few pages, including unnecessary attributes and minor accessibility warnings, all of which were resolved, except for unclosed HTML tags in the Django Allauth templates on the Register Page, which I deferred fixing due to time constraints.
+
+- **CSS Validation**:  
+  I used the [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) to check the styles.css file, and no errors were found. A warning about identical ``background-color`` and ``border-color`` in a specific selector was resolved by changing the ``border-color`` to ``transparent``.  
+  ![CSS validation results](/docs/images/W3C_CSS.png)
+
+- **PEP8 Compliance Check**:
+  I used the [CI Python Linter](https://pep8ci.herokuapp.com/) to ensure my Python code follows the PEP8 style guide for readability and consistency. The linter flagged issues like line length, improper indentation, and missing or extra whitespace, which I reviewed and corrected across all files. After making the necessary adjustments, the code now complies with PEP8 standards.
+
+  However, in some cases, like the following test assertion:
+
+  ```python
+  self.assertTrue(
+      any("You are not authorized to edit this booking." in str(msg) for msg in messages),
+      "Expected 'You are not authorized' message not found"
+  )
+  ```
+
+  I couldn't shorten the line further while keeping the logic clear and readable. It checks whether the expected message exists in the list of messages, which requires iterating over the list, making it difficult to reduce the line length without sacrificing clarity.
+
+- **Django Automated Testing**:  
+  In addition to the above tools, I also utilized the Django automated testing within my Gitpod workspace to ensure the functionality and stability of the application.
+
 For detailed information about testing, refer to the [TESTING.md](./TESTING.md) file.
 
 ------

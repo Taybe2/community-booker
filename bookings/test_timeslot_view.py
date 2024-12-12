@@ -5,6 +5,7 @@ from datetime import timedelta
 from bookings.models import TimeSlot, Booking, User
 from community_centre.models import CommunityCentre
 
+
 class TimeSlotViewTests(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -28,12 +29,12 @@ class TimeSlotViewTests(TestCase):
             closing_time='17:00:00'
         )
 
-        # Create test time slots for the next 15 days, linked to the community centre
+        # Create test time slots for the next 15 days
         today = now().date()
         cls.time_slots = []
         for i in range(15):
             slot = TimeSlot.objects.create(
-                community_centre=cls.community_centre,  # Link to the community centre
+                community_centre=cls.community_centre,
                 date=today + timedelta(days=i + 1),
                 start_time="10:00:00",
                 end_time="12:00:00"
@@ -119,5 +120,3 @@ class TimeSlotViewTests(TestCase):
             self.assertTrue(all(
                 isinstance(slot['slot'], TimeSlot) for slot in slots
             ))
-
-

@@ -349,11 +349,13 @@ def edit_booking_view(request, slug, slot_id=None):
 
     if (request.user == booking.user):
         new_time_slot = None
-        
+
         if slot_id:
             new_time_slot = TimeSlot.objects.filter(id=slot_id).first()
             if not new_time_slot:
-                messages.error(request, "The selected time slot is invalid or does not exist.")
+                messages.error(
+                    request,
+                    "The selected time slot is invalid or does not exist.")
                 return redirect('time_slots', booking_slug=booking.slug)
 
             # Validate the new time slot

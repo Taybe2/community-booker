@@ -5,10 +5,13 @@ from django.contrib.auth.models import User
 from community_centre.models import CommunityCentre
 from bookings.models import Booking, TimeSlot
 
+
 class TestEditBookingView(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='password')
-        self.other_user = User.objects.create_user(username='otheruser', password='password')
+        self.user = User.objects.create_user(
+            username='testuser', password='password')
+        self.other_user = User.objects.create_user(
+            username='otheruser', password='password')
         self.community_centre = CommunityCentre.objects.create(
             name='Evergreen Community Centre',
             description='Community space',
@@ -50,14 +53,14 @@ class TestEditBookingView(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertTrue(
             any("You are not authorized to edit this booking." in str(msg) for msg in messages),
-            "Expected 'You are not authorized' message not found in messages"
+            "Expected 'You are not authorized' message not found"
         )
 
     def test_shows_form_for_owner(self):
         self.client.login(username='testuser', password='password')
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Edit Booking")  # Adjust based on template content
+        self.assertContains(response, "Edit Booking")
 
     def test_valid_post_updates_booking(self):
         self.client.login(username='testuser', password='password')
@@ -80,10 +83,16 @@ class TestEditBookingView(TestCase):
             'notes': 'Updated notes'
         })
         self.assertEqual(response.status_code, 200)
-        self.assertFormError(response, 'form', 'occasion', 'This field is required.')
+        self.assertFormError(
+            response,
+            'form',
+            'occasion',
+            'This field is required.'
+        )
 
     def test_invalid_slot_id(self):
         invalid_url = reverse('edit-booking', args=[self.booking.slug, 999])
         self.client.login(username='testuser', password='password')
         response = self.client.get(invalid_url)
-        self.assertRedirects(response, reverse('time_slots', args=[self.booking.slug]))
+        self.assertRedirects(
+            response, reverse('time_slots', args=[self.booking.slug]))

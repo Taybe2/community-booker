@@ -8,7 +8,8 @@ from community_centre.models import CommunityCentre
 
 class TimeSlot(models.Model):
     """
-    Stores a single time slot entry related to :model:`community_centre.CommunityCentre`
+    Stores a single time slot entry
+    related to :model:`community_centre.CommunityCentre`
     """
     community_centre = models.ForeignKey(
         'community_centre.CommunityCentre',
