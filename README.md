@@ -44,7 +44,7 @@ Here are some of the key user stories for the project:
 #### Design Approach
 - **Simplicity and Clarity**: The user interface features a clean layout with intuitive navigation to ensure ease of use.
 - **Accessibility**: Designed with accessibility in mind, including sufficient color contrast, large clickable buttons, and clear text.
-- **Responsiveness**: The application is fully responsive, providing a seamless experience across devices, including desktops, tablets, and mobile phones.
+- **Responsiveness**: The application follows a mobile-first approach, ensuring a seamless experience across devices, including mobile phones, tablets, and desktops.
 
 #### Key Design Features
 1. **Navigation Bar**: Includes links to key pages such as "Available Time Slots" and "My Bookings," ensuring easy access to core functionality.
