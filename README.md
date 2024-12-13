@@ -91,7 +91,7 @@ By centering the design process around user needs, this application aims to prov
 #### Iterative Development
 The development process followed Agile principles, focusing on iterative progress and user-centric features. By breaking down the project into smaller, manageable tasks, each iteration delivered a functional aspect of the application.
 
-### 5. User Stories and Development Tasks
+#### User Stories and Development Tasks
 
 This project follows a user-centered approach. The table below shows how each user story is addressed through specific development tasks:
 
