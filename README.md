@@ -74,7 +74,7 @@ The initial design was created using wireframes to visualize the user flow and i
 
 ![Confirm Booking Wireframe](docs/wireframes/pngs/confirm_booking.png)
 
-###### Tools Used
+##### Tools Used
 These wireframes were created using Balsamiq, a user-friendly tool for creating low-fidelity wireframes that help visualize and plan application designs.
 
 ##### Note on Iterations
