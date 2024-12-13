@@ -115,7 +115,7 @@ Using GitHub Project Boards streamlined task management and ensured timely deliv
 ### 4. Features
 
 #### 1. **My Bookings**
-  - **Description:** After logging in, users can view their bookings, which are grouped into "Upcoming Bookings" and "Past Bookings." Bookings are also paginated for easy navigation. Users can manage their existing bookings.
+  - **Description:** After logging in, users can view their bookings, which are grouped into "Upcoming Bookings" and "Past Bookings." Bookings are also paginated for easy navigation. Users can manage their upcoming bookings, while past bookings cannot be edited or canceled.
   - **Screenshots:**
   ##### Upcoming Bookings View
   ![My Bookintgs Upcoming Screenshot](/docs/images/features/my-bookings-upcoming.png)
@@ -125,7 +125,7 @@ Using GitHub Project Boards streamlined task management and ensured timely deliv
 #### 2. **Available Time Slots**
   - **Description:** Users can view available time slots for booking the community center. Time slots are displayed starting from tomorrow.
   - **Screenshots:**
-  ##### Users can select a time slot for booking:
+  ##### Users can select an available time slot for booking:
   ![Select Time Slots Screenshot](/docs/images/features/select-slot.png)
   ##### Users can navigate through different dates using the 'Previous 10 Days' and 'Next 10 Days' buttons:
   ![Next and Previous Buttons Screenshot](/docs/images/features/prev-next-buttons.png)
@@ -386,7 +386,6 @@ To ensure the responsiveness of the Community Centre Booking App, the following 
   I couldn't shorten the line further while keeping the logic clear and readable. It checks whether the expected message exists in the list of messages, which requires iterating over the list, making it difficult to reduce the line length without sacrificing clarity.
 
 #### 5. Manual Testing:
-
 | **Category**                 | **Test Case**                                      | **Expected Outcome**                 | **Result** |
 |------------------------------|--------------------------------------------------|--------------------------------------|------------|
 | **User Authentication**      | Register a New User                              | User registered, logged in           | Pass       |
@@ -403,17 +402,15 @@ To ensure the responsiveness of the Community Centre Booking App, the following 
 |                              | Non-Existing Time Slot Booking                   | Redirected, error message shown      | Pass       |
 |                              | Accessing Already Booked Time Slot               | Redirected, error message shown      | Pass       |
 |                              | Accessing Non-Existent Time Slot in Edit Booking | Redirected, error message shown      | Pass       |
-|                              | Editing to Booked Time Slot                      | Redirected, error message shown      | Pass       |
 | **Access Control**           | Accessing Another User's Booking                 | Access denied, redirected            | Pass       |
 |                              | Choosing Time Slot of Another User’s Booking     | Access denied, redirected            | Pass       |
 |                              | Accessing Generate Time Slots Without Privileges | Access denied                        | Pass       |
-|                              | Non-Admin User Accessing Admin Pages                           | Access denied                        | Pass       |
+|                              | Non-Admin User Accessing Admin Pages             | Access denied                        | Pass       |
 | **UI and Navigation**        | Navigation Bar                                   | Links functional                     | Pass       |
 |                              | Responsive Design                                | UI adjusts correctly                 | Pass       |
 
-
 #### 6. Django Automated Testing:  
-  In addition to the above tools, I also utilized the Django automated testing within my Gitpod workspace to ensure the functionality and stability of the application.
+  In addition to the above tools, I also utilized the Django automated testing within my Gitpod workspace to help ensure the functionality and stability of the application.
 
 #### 7. Accessibility Testing
 
