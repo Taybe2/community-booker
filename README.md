@@ -5,9 +5,9 @@ A simplified platform to manage and book time slots for community centers.
 
 #### Table of Contents
 - [1. Project Overview](#1-project-overview)
-- [2. Agile Methodology](#2-agile-methodology)
-- [3. Features](#3-features)
-- [4. Wireframes](#4-wireframes)
+- [2. User Experience Design](#2-user-experience-design)
+- [3. Agile Methodology](#3-agile-methodology)
+- [4. Features](#4-features)
 - [5. Entity Relationship Diagram (ERD)](#5-entity-relationship-diagram-erd)
 - [6. Technologies Used](#6-technologies-used)
 - [7. Installation Instructions](#7-installation-instructions)
@@ -16,17 +16,20 @@ A simplified platform to manage and book time slots for community centers.
 - [10. Testing](#10-testing)
 - [11. Deployment](#11-deployment)
 - [12. Future Enchancements](#12-future-enchancements)
-- [13. Contributing](#12-future-enchancements)
-- [14. License](#14-license)
-- [15. Credits](#15-credits)
+- [13. Contributing](#12-future-enchancements)                      
+- [14. Credits](#15-credits)
 
 ###  1. Project Overview
 The Community Booker App simplifies the process of booking and managing community center resources. Designed with user-friendliness and efficiency in mind, it caters to community centers, event organizers, and local residents.
 
 ------
 
-### 2. Agile Methodology
-In this project, I followed Agile practices to ensure incremental progress and iterative feedback. The development was organized into user stories, and tasks were tracked using a project board.
+### 2. User Experience Design
+
+#### Target Audience
+This application is designed for:
+- **Community Members**: Individuals looking to book a space for personal or group activities, such as meetings, classes, or events.
+- **Community Center Administrators**: Staff managing bookings, ensuring optimal space utilization.
 
 #### User Stories
 Here are some of the key user stories for the project:
@@ -38,28 +41,21 @@ Here are some of the key user stories for the project:
 - As a **logged in user** I can **edit an upcoming booking** so that **I can update the occasion or reschedule to a different time slot**
 - As a **logged in user** I can **cancel an upcoming booking** so that **the time slot becomes available for others**
 
-#### Project Board
-All the tasks, user stories, and issues were tracked on the project board. You can check out the project board for the latest updates and progress:
+#### Design Approach
+- **Simplicity and Clarity**: The user interface features a clean layout with intuitive navigation to ensure ease of use.
+- **Accessibility**: Designed with accessibility in mind, including sufficient color contrast, large clickable buttons, and clear text.
+- **Responsiveness**: The application is fully responsive, providing a seamless experience across devices, including desktops, tablets, and mobile phones.
 
-[Link to Project Board](https://github.com/users/Taybe2/projects/5/views/1)
+#### Key Design Features
+1. **Navigation Bar**: Includes links to key pages such as "Available Time Slots" and "My Bookings," ensuring easy access to core functionality.
+2. **Hero Image with CTA Buttons**: Featured on the homepage, guiding users to explore available slots or learn more about the community center.
+3. **My bookings Page**: Displays upcoming and past bookings, with options to edit or cancel bookings.
+4. **Available Time Slots Page**: Organized by date and time, with a "Book Now" button for quick action.
 
-------
+#### Wireframes
+The initial design was created using wireframes to visualize the user flow and interface elements. These wireframes guided the development process to ensure alignment with user needs.
 
-### 3. Features
-- **User Autentication:** Users can register, log in, reset their password, and manage their bookings, including checking past or upcoming bookings and editing or deleting them.
-- **Booking System:** Allows users to view available time slots and book them instantly.
-- **Admin Panel:** Django's built-in admin panel allows community center admins to manage bookings, update center details, and generate time slots.
-- **Homepage:** Features a hero image with call-to-action button for quick access to Available Time Slots and Community Centre Details.
-- **My Bookings Page:** Users can view, edit, or cancel their bookings.
-- **Resposive Design:** Optimized for both desktop and mobile devices.
-
-##### [ Back to Top ](#table-of-contents)
-
-------
-### 4. Wireframes
-The wireframes below illustrate the initial design concepts for the Community Booker App, highlighting the layout and navigation flow of key pages such as the homepage, booking page, and user booking management pages.
-
-#### Key Screens
+##### Key Screens
 
 - **Homepage:** Features a hero image with call-to-action buttons for quick access to available time slots and community center details.
 
@@ -78,11 +74,82 @@ The wireframes below illustrate the initial design concepts for the Community Bo
 
 ![Confirm Booking Wireframe](docs/wireframes/pngs/confirm_booking.png)
 
-#### Tools Used
+###### Tools Used
 These wireframes were created using Balsamiq, a user-friendly tool for creating low-fidelity wireframes that help visualize and plan application designs.
 
-#### Note on Iterations
+##### Note on Iterations
 The wireframes served as the foundation for the app's UI design. Some elements have been refined during implementation to improve user experience.
+
+By centering the design process around user needs, this application aims to provide a seamless and enjoyable experience for both community members and administrators.
+
+##### [ Back to Top ](#table-of-contents)
+
+------
+
+### 3. Agile Methodology
+
+#### Iterative Development
+The development process followed Agile principles, focusing on iterative progress and user-centric features. By breaking down the project into smaller, manageable tasks, each iteration delivered a functional aspect of the application.
+
+#### GitHub Project Board
+A GitHub Project Board was utilized to manage tasks and track progress throughout the development lifecycle. The board included the following columns:
+- **To Do**: Tasks planned for the current iteration.
+- **In Progress**: Tasks actively being worked on.
+- **Done**: Completed tasks.
+
+This approach ensured clear visibility of the project's status and helped prioritize work effectively.
+
+#### Benefits of the Agile Approach
+- **Flexibility**: Allowed adjustments to the scope and priorities as the project evolved.
+- **Focused Delivery**: Kept development aligned with user stories to meet user needs effectively.
+- **Task Tracking**: Provided a clear overview of progress and upcoming work.
+
+Using GitHub Project Boards streamlined task management and ensured timely delivery of the Minimum Viable Product (MVP).
+
+[Link to Project Board](https://github.com/users/Taybe2/projects/5/views/1)
+
+##### [ Back to Top ](#table-of-contents)
+
+------
+
+### 4. Features
+
+#### 1. **My Bookings**
+   - **Description:** After logging in, users can view their bookings, which are grouped into "Upcoming Bookings" and "Past Bookings." Bookings are also paginated for easy navigation. Users can manage their existing bookings.
+   - **Screenshots:**  
+   ![My Bookintgs Upcoming Screenshot](/docs/images/features/my-bookings-upcoming.png)
+   ![My Bookintgs Past Screenshot](/docs/images/features/my-bookings-past.png)
+
+#### 2. **Available Time Slots**
+  - **Description:** Users can view available time slots for booking the community center. Time slots are displayed starting from tomorrow.
+  - **Screenshots:**
+  Users can select a time slot for booking:
+  ![Select Time Slots Screenshot](/docs/images/features/select-slot.png)
+  - Users can navigate through different dates using the 'Previous 10 Days' and 'Next 10 Days' buttons:
+  ![Next and Previous Buttons Screenshot](/docs/images/features/prev-next-buttons.png)
+  - Users can proceed with booking creation by clicking the 'Book Selected Time Slot' button:
+  ![Select Time Slot Button Screenshot](/docs/images/features/book-button.png)
+
+#### 3. **Make a Booking**
+   - **Description:** Users can select an available time slot and make a booking for the community center.
+   - **Screenshot:**  
+   ![Make a Booking Screenshot](link-to-your-screenshot.png)
+
+#### 4. **My Bookings**
+   - **Description:** Users can view, edit, or cancel their existing bookings. This page serves as the home page for logged-in users.
+   - **Screenshot:**  
+   ![My Bookings Screenshot](link-to-your-screenshot.png)
+
+#### 5. **Booking Privacy Settings**
+   - **Description:** Users can choose whether their booking is public (viewable by others) or private (not viewable by others).
+   - **Screenshot:**  
+   ![Booking Privacy Screenshot](link-to-your-screenshot.png)
+
+#### 7. **Admin Panel**
+   - **Description:** Admins can manage the community center's data, bookings, and time slots through Django's built-in admin panel.
+   - **Screenshot:**  
+   ![Admin Panel Screenshot](link-to-your-screenshot.png)
+
 
 ##### [ Back to Top ](#table-of-contents)
 
@@ -438,12 +505,6 @@ Contributions are welcome! To get started:
 Thank you for your contributions!
 
 ##### [ Back to Top ](#table-of-contents)
-
-------
-
-### 14. License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ------
 
