@@ -91,6 +91,21 @@ By centering the design process around user needs, this application aims to prov
 #### Iterative Development
 The development process followed Agile principles, focusing on iterative progress and user-centric features. By breaking down the project into smaller, manageable tasks, each iteration delivered a functional aspect of the application.
 
+### 5. User Stories and Development Tasks
+
+This project follows a user-centered approach. The table below shows how each user story is addressed through specific development tasks:
+
+| **User Story**                                                                                      | **Mapped Development Tasks**                                                                                     |
+|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| As a site user, I can register an account so that I can make a booking.                             | - Implement user registration.<br>- Create login/logout functionality.<br>- Validate and secure user credentials. |
+| As a logged-in user, I can create a booking so that I can reserve a spot for my event.              | - Enable time slot selection.<br>- Develop booking creation functionality.<br>- Show booking confirmation.       |
+| As an admin, I can create, update, and delete time slots for my community center so that users can book them. | - Add admin interface for time slot management.<br>- Enable time slot creation and updates.<br>- Allow time slot deletion. |
+| As a user, I can see all available time slots for the community center so that I can choose a convenient time to book. | - Display available time slots starting from tomorrow.<br>- Add pagination and navigation (Previous 10 Days/Next 10 Days). |
+| As a logged-in user, I can view a list of my bookings so that I can keep track of the times I have reserved for the community center. | - Display "My Bookings" grouped into "Upcoming" and "Past".<br>- Add pagination for easier navigation.           |
+| As a logged-in user, I can edit an upcoming booking so that I can update the occasion or reschedule to a different time slot. | - Implement editing functionality for upcoming bookings.<br>- Validate and update booking details.               |
+| As a logged-in user, I can cancel an upcoming booking so that the time slot becomes available for others. | - Develop cancellation functionality for upcoming bookings.<br>- Confirm cancellation and update the database.   |
+
+
 #### GitHub Project Board
 A GitHub Project Board was utilized to manage tasks and track progress throughout the development lifecycle. The board included the following columns:
 - **To Do**: Tasks planned for the current iteration.
