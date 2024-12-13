@@ -1,6 +1,7 @@
 
 ## Community Booker App
 A simplified platform to manage and book time slots for community centers.
+![Homepage On Different Devices](docs/images/am_i_responsive.png)
 # **[Link to Live Site](https://community-booker-app-9f0552b871a8.herokuapp.com/)**  
 
 #### Table of Contents
