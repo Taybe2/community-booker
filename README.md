@@ -115,36 +115,41 @@ Using GitHub Project Boards streamlined task management and ensured timely deliv
 ### 4. Features
 
 #### 1. **My Bookings**
-   - **Description:** After logging in, users can view their bookings, which are grouped into "Upcoming Bookings" and "Past Bookings." Bookings are also paginated for easy navigation. Users can manage their existing bookings.
-   - **Screenshots:**  
-   ![My Bookintgs Upcoming Screenshot](/docs/images/features/my-bookings-upcoming.png)
-   ![My Bookintgs Past Screenshot](/docs/images/features/my-bookings-past.png)
+  - **Description:** After logging in, users can view their bookings, which are grouped into "Upcoming Bookings" and "Past Bookings." Bookings are also paginated for easy navigation. Users can manage their existing bookings.
+  - **Screenshots:**
+  ##### Upcoming Bookings View
+  ![My Bookintgs Upcoming Screenshot](/docs/images/features/my-bookings-upcoming.png)
+  ##### Past Bookings View:
+  ![My Bookintgs Past Screenshot](/docs/images/features/my-bookings-past.png)
 
 #### 2. **Available Time Slots**
   - **Description:** Users can view available time slots for booking the community center. Time slots are displayed starting from tomorrow.
   - **Screenshots:**
-  Users can select a time slot for booking:
+  ##### Users can select a time slot for booking:
   ![Select Time Slots Screenshot](/docs/images/features/select-slot.png)
-  - Users can navigate through different dates using the 'Previous 10 Days' and 'Next 10 Days' buttons:
+  ##### Users can navigate through different dates using the 'Previous 10 Days' and 'Next 10 Days' buttons:
   ![Next and Previous Buttons Screenshot](/docs/images/features/prev-next-buttons.png)
-  - Users can proceed with booking creation by clicking the 'Book Selected Time Slot' button:
+  ##### Users can proceed with booking creation by clicking the 'Book Selected Time Slot' button:
   ![Select Time Slot Button Screenshot](/docs/images/features/book-button.png)
 
-#### 3. **Make a Booking**
-   - **Description:** Users can select an available time slot and make a booking for the community center.
+#### 3. **Create a Booking**
+   - **Description:** After selecting an available time slot users can create a booking for the community center.
    - **Screenshot:**  
-   ![Make a Booking Screenshot](link-to-your-screenshot.png)
+   ![Create a Booking Screenshot](/docs/images/features/create-booking.png)
 
-#### 4. **My Bookings**
-   - **Description:** Users can view, edit, or cancel their existing bookings. This page serves as the home page for logged-in users.
-   - **Screenshot:**  
-   ![My Bookings Screenshot](link-to-your-screenshot.png)
+#### 4. **Edit a Booking**
+  - **Description:** Users can edit their existing bookings.
+  - **Screenshots:**
+  ##### Users can edit existing booking:  
+  ![Edit a Booking Screenshot](/docs/images/features/edit-booking.png)
+  ##### Users can select a new time slot for an existing booking:  
+  ![Select a New time Slot for a Booking Screenshot](/docs/images/features/reschedule-booking.png)
 
 #### 5. **Booking Privacy Settings**
-   - **Description:** Users can choose whether their booking is public (viewable by others) or private (not viewable by others).
-   - **Screenshot:**  
-   ![Booking Privacy Screenshot](link-to-your-screenshot.png)
-
+  - **Description:** Users can choose whether their booking is public (viewable by others) or private (not viewable by others).
+  - **Screenshot:**  
+  ![Booking Privacy Screenshot](/docs/images/features/private-event.png)
+  ![Booking Privacy Screenshot](/docs/images/features/public-event.png)
 #### 7. **Admin Panel**
    - **Description:** Admins can manage the community center's data, bookings, and time slots through Django's built-in admin panel.
    - **Screenshot:**  
