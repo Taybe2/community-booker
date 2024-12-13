@@ -16,8 +16,8 @@ A simplified platform to manage and book time slots for community centers.
 - [10. Testing](#10-testing)
 - [11. Deployment](#11-deployment)
 - [12. Future Enchancements](#12-future-enchancements)
-- [13. Contributing](#12-future-enchancements)                      
-- [14. Credits](#15-credits)
+- [13. Contributing](#13-contributing)                      
+- [14. Credits](#14-credits)
 
 ###  1. Project Overview
 The Community Booker App simplifies the process of booking and managing community center resources. Designed with user-friendliness and efficiency in mind, it caters to community centers, event organizers, and local residents.
@@ -523,7 +523,7 @@ Thank you for your contributions!
 
 ------
 
-### 15. Credits
+### 14. Credits
 
 This project makes use of the following open-source libraries and tools:
 
