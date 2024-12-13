@@ -1,6 +1,13 @@
+// Initialize the Bootstrap modal for booking cancellation
 const deleteModal = new bootstrap.Modal(document.getElementById("cancelBookingModal"));
+
+// Retrieve all delete buttons (those meant for canceling bookings)
 const deleteButtons = document.getElementsByClassName("btn-delete");
+
+// Get the confirm button within the modal
 const deleteConfirm = document.getElementById("confirmCancelButton");
+
+// Get elements to dynamically update the modal title and content
 const modalTitle = document.getElementById("cancelBookingModalLabel");
 const modalContent = document.getElementById("cancelBookingModalText");
 
