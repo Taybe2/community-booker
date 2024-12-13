@@ -138,22 +138,35 @@ Using GitHub Project Boards streamlined task management and ensured timely deliv
    ![Create a Booking Screenshot](/docs/images/features/create-booking.png)
 
 #### 4. **Edit a Booking**
-  - **Description:** Users can edit their existing bookings.
+  - **Description:** Users can edit their upcoming bookings.
   - **Screenshots:**
-  ##### Users can edit existing booking:  
+  ##### Users can edit an upcoming booking:  
   ![Edit a Booking Screenshot](/docs/images/features/edit-booking.png)
-  ##### Users can select a new time slot for an existing booking:  
+  ##### Users can select a new time slot for an upcoming booking:  
   ![Select a New time Slot for a Booking Screenshot](/docs/images/features/reschedule-booking.png)
 
 #### 5. **Booking Privacy Settings**
   - **Description:** Users can choose whether their booking is public (viewable by others) or private (not viewable by others).
-  - **Screenshot:**  
+  - **Screenshots:**  
   ![Booking Privacy Screenshot](/docs/images/features/private-event.png)
   ![Booking Privacy Screenshot](/docs/images/features/public-event.png)
+
+#### 4. **Cancel (Delete) a Booking**
+  - **Description:** Users can delete their upcoming bookings.
+  - **Screenshot:**
+  ##### Users can delete an upcoming booking:  
+  ![Delete a Booking Screenshot](/docs/images/features/cancel-booking.png)
+
 #### 7. **Admin Panel**
-   - **Description:** Admins can manage the community center's data, bookings, and time slots through Django's built-in admin panel.
-   - **Screenshot:**  
-   ![Admin Panel Screenshot](link-to-your-screenshot.png)
+  - **Description:** Admins can manage the community center's data, bookings, and time slots through Django's built-in admin panel.
+  - **Screenshots:** 
+  ##### Admin can manage community centre details and generate time slots for it
+  ![Admin Community Centre Screenshot](/docs/images/features/admin-community-centre.png)
+  ##### Admin can manage bookings
+  ![Admin bookings Screenshot](/docs/images/features/admin-bookings.png)
+  ##### Admin can manage time slots
+  ![Admin Time slots Screenshot](/docs/images/features/admin-time-slots.png)
+
 
 
 ##### [ Back to Top ](#table-of-contents)
